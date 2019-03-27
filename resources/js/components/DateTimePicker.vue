@@ -1,10 +1,10 @@
 <script type="text/ecmascript-6">
-    import moment from 'moment';
+    import moment from 'moment'
 
     /**
      * Create the default date/time picker.
      *
-     * @source https://github.com/writingink/wink
+     * @author Mohamed Said <themsaid@gmail.com>
      */
     export default {
         props: ['value'],

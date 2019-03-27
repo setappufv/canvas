@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="{{ url('https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.13.1/build/styles/github.min.css') }}">
 
     <!-- Style sheets -->
-    <link rel="stylesheet" type="text/css" href="{{ mix('css/app.css', 'vendor/canvas') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset(mix(\Canvas\Canvas::$useDarkMode ? 'css/app-dark.css' : 'css/app.css', 'vendor/canvas')) }}">
 
     <!-- Additional style sheets -->
     @stack('styles')

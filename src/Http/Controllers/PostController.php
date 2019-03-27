@@ -190,7 +190,7 @@ class PostController extends Controller
      * @param  array $incomingTags
      * @return array
      *
-     * @source https://gihtub.com/writingink/wink
+     * @author Mohamed Said <themsaid@gmail.com>
      */
     private function collectTags(array $incomingTags): array
     {
@@ -217,7 +217,7 @@ class PostController extends Controller
      * @param array $incomingTopics
      * @return array
      *
-     * @source https://gihtub.com/writingink/wink
+     * @author Mohamed Said <themsaid@gmail.com>
      */
     private function assignTopics(array $incomingTopics): array
     {

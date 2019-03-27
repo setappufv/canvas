@@ -4,7 +4,7 @@
     /**
      * Upload an image from the editor.
      *
-     * @source https://github.com/writingink/wink
+     * @author Mohamed Said <themsaid@gmail.com>
      */
     export default {
         props: ['unsplash'],

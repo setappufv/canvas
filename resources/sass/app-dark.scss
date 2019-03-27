@@ -1,0 +1,174 @@
+
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Nunito|Merriweather:300,400,700");
+@import "~@fortawesome/fontawesome-free/scss/regular";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+
+// Typography
+$font-family-sans-serif: "Nunito", sans-serif;
+$font-family-serif: "Merriweather", serif;
+$fa-font-path: "../fonts" !default;
+$font-size-base: 0.9rem;
+$line-height-base: 1.6;
+
+@import "base";
+
+body {
+  background-color: #252830;
+  color: #cfd2da;
+}
+
+a {
+  color: #cfd2da;
+}
+
+a.nav-link {
+  color: #cfd2da !important;
+}
+
+a:hover {
+  color: #434857 !important;
+}
+
+blockquote {
+  border-left: 4px solid #434857 !important;
+
+  span {
+    color: #cfd2da !important;
+  }
+}
+
+.btn-outline-primary {
+  color: #cfd2da;
+  border-color: #cfd2da;
+}
+
+.btn-outline-primary:hover {
+  color: #252830 !important;
+  background-color: #cfd2da;
+  border-color: #cfd2da;
+}
+
+.btn-primary,
+.btn-danger {
+  color: #cfd2da !important;
+}
+
+.btn-primary:hover,
+.btn-danger:hover {
+  color: #252830 !important;
+}
+
+.border-bottom {
+  border-bottom: 1px solid #434857 !important;
+}
+
+.border-top {
+  border-top: 1px solid #434857 !important;
+}
+
+.card {
+  background: transparent;
+  border: 1px solid #434857;
+}
+
+.custom-select {
+  background-color: transparent !important;
+  color: #cfd2da !important;
+}
+
+.dropdown-menu {
+  background-color: #252830 !important;
+  border: 1px solid #434857 !important;
+}
+
+.dropdown-menu a {
+  color: #cfd2da !important;
+}
+
+.dropdown-menu a:hover {
+  color: #252830 !important;
+  background-color: #cfd2da;
+}
+
+.dropdown-divider {
+  border-top: 1px solid #434857 !important;
+}
+
+div.controls {
+  background-color: #252830 !important;
+}
+
+input, textarea {
+  background: transparent !important;
+  color: #cfd2da !important;
+}
+
+.line-chart {
+  line.line-horizontal,
+  line.line-vertical {
+    stroke: #434857 !important;
+  }
+}
+
+.logo i {
+  font-size: 20px;
+  color: #cfd2da;
+}
+
+.modal-content {
+  background-color: #252830 !important;
+  border: 1px solid #434857 !important;
+}
+
+.modal-footer {
+  border-top: 1px solid #434857 !important;
+}
+
+.multiselect__content-wrapper {
+  background-color: #252830 !important;
+  border: 1px solid #434857 !important;
+}
+
+.multiselect__element {
+  color: #cfd2da !important;
+}
+
+.multiselect__option--selected, .multiselect__option--selected::after {
+  color: #252830 !important;
+  background-color: #cfd2da !important;
+}
+
+.multiselect__single {
+  background: none !important;
+  color: #cfd2da !important;
+}
+
+.multiselect__tags {
+  background: none !important;
+}
+
+.ql-editor {
+  color: #cfd2da !important;
+
+  .bg-white {
+    background-color: transparent !important;
+  }
+
+  hr {
+    color: #434857 !important;
+  }
+}
+
+.ql-editor.ql-blank::before {
+  color: #59616A !important;
+}
+
+select.input {
+  color: #cfd2da !important;
+}
+
+text {
+  fill: #cfd2da !important;
+}

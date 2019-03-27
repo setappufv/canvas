@@ -3,7 +3,7 @@
     /**
      * Upload a featured image.
      *
-     * @source https://github.com/writingink/wink
+     * @author Mohamed Said <themsaid@gmail.com>
      */
     export default {
         props: ['post', 'url', 'caption', 'unsplash'],

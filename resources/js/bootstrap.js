@@ -1,4 +1,3 @@
-
 window._ = require('lodash');
 
 /**
@@ -12,15 +11,35 @@ try {
     window.$ = window.jQuery = require('jquery');
     window.autosize = window.autosize ? window.autosize : require('autosize');
 
-    // Apply auto-sizing to textarea inputs
-    $(function () {autosize($('textarea'))});
+    /**
+     * Current workaround for using the Autosize library which will only resize
+     * elements when clicked, not on the initial page load.
+     *
+     * @link http://www.jacklmoore.com/autosize/#faq-hidden
+     */
+    $(function () {
+        let textarea = $('textarea');
 
-    // Opt-in to tooltip functionality
-    $(function () {$('[data-toggle="tooltip"]').tooltip()});
+        autosize(textarea);
+
+        textarea.focus(function () {
+            autosize.update(textarea);
+        });
+    });
+
+    /**
+     * Initialize all tooltips on a page by manually opting in.
+     *
+     * @link https://getbootstrap.com/docs/4.3/components/tooltips/#example-enable-tooltips-everywhere
+     */
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    });
 
     require('bootstrap');
     require('@fortawesome/fontawesome-free');
-} catch (e) {}
+} catch (e) {
+}
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests

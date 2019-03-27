@@ -17,6 +17,16 @@
 
                 labels: Object.keys(this.views)
             }
+        },
+
+        methods: {
+            pluralize(string, count) {
+                if (count > 1 || count === 0) {
+                    return ' ' + string + 's';
+                } else {
+                    return ' ' + string;
+                }
+            }
         }
     }
 </script>
@@ -40,7 +50,7 @@
                 :dataSets="this.points"
                 :tooltipOptions="{
                     formatTooltipX: d => moment(d, 'YYYY-MM-DD').format('dddd, MMMM Do'),
-                    formatTooltipY: d => d + ' views',
+                    formatTooltipY: d => d + pluralize('view', d),
                 }">
         </vue-frappe>
     </div>

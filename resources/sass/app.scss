@@ -5,49 +5,16 @@
 @import "~@fortawesome/fontawesome-free/scss/solid";
 @import "~@fortawesome/fontawesome-free/scss/fontawesome";
 
-// Variables
-@import "variables";
+// Typography
+$font-family-sans-serif: "Nunito", sans-serif;
+$font-family-serif: "Merriweather", serif;
+$fa-font-path: "../fonts" !default;
+$font-size-base: 0.9rem;
+$line-height-base: 1.6;
 
-// Bootstrap
-@import "~bootstrap/scss/bootstrap";
-
-[v-cloak] {
-  display: none;
-}
-
-body:not(.user-is-tabbing) a:focus,
-body:not(.user-is-tabbing) button:focus,
-body:not(.user-is-tabbing) input:focus,
-body:not(.user-is-tabbing) select:focus,
-body:not(.user-is-tabbing) textarea:focus {
-  outline: none;
-}
-
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
-  transition: background-color 5000s ease-in-out 0s;
-}
-
-a, .btn-link {
-  text-decoration: none !important;
-}
-
-.serif {
-  font-family: $font-family-serif;
-}
-
-.sans-serif {
-  font-family: $font-family-sans-serif;
-}
+@import "base";
 
 .logo i {
   font-size: 20px;
   color: rgb(33, 37, 41) !important;
-}
-
-input, textarea, select {
-  box-shadow: none !important;
-  outline: none !important;
 }

@@ -7,9 +7,9 @@ return [
     | Route Middleware
     |--------------------------------------------------------------------------
     |
-    | Assign any custom middleware to limit access to the admin interface.
-    | If your app needs roles or permissions that allow for specific
-    | users to manage the blog, create and add a middleware here.
+    | These middleware will be attached to each route in Canvas, giving you
+    | the chance to add your own middleware to this list or change any of
+    | the existing middleware. Or, you can simply stick with this list.
     |
     */
 

@@ -11,8 +11,7 @@
 	"authors": [
 		{
 			"name": "Todd Austin",
-			"email": "austin.todd.j@gmail.com",
-			"role": "Developer"
+			"email": "austin.todd.j@gmail.com"
 		}
 	],
 	"require": {

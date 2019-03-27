@@ -1,10 +1,10 @@
 <script type="text/ecmascript-6">
-    import axios from 'axios';
+    import axios from 'axios'
 
     /**
      * Create the default image picker.
      *
-     * @source https://github.com/writingink/wink
+     * @author Mohamed Said <themsaid@gmail.com>
      */
     export default {
         props: ['unsplash'],

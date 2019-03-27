@@ -2,7 +2,7 @@
     /**
      * Embed a block of HTML.
      *
-     * @source https://github.com/writingink/wink
+     * @author Mohamed Said <themsaid@gmail.com>
      */
     export default {
         data() {

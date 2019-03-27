@@ -1,10 +1,10 @@
 <?php
 
-namespace Canvas\Tests\Unit\Console;
+namespace Canvas\Tests\Console;
 
-use Canvas\Tests\TestCase;
+use Canvas\Tests\FeatureTestCase;
 
-class InstallCommandTest extends TestCase
+class InstallCommandTest extends FeatureTestCase
 {
     /**
      * @return void

@@ -20,8 +20,8 @@
                 <div class="form-group row">
                     <div class="col-12">
                         <label for="summary" class="font-weight-bold">Summary</label>
-                        <textarea name="summary" class="form-control border-0 px-0" rows="1"
-                                  placeholder="A descriptive summary.."
+                        <textarea name="summary" class="form-control border-0 px-0"
+                                  placeholder="A descriptive summary.." rows="1"
                                   title="Summary">{{ $data['post']->summary }}</textarea>
                     </div>
                 </div>
@@ -29,7 +29,8 @@
                     <div class="col-12">
                         <label for="topic" class="font-weight-bold">Topic</label>
 
-                        <topic-select :topics="{{ $data['topics'] }}" :assigned="{{ json_encode(optional($data['post']->topic->first())->only(['name', 'slug'])) }}"></topic-select>
+                        <topic-select :topics="{{ $data['topics'] }}"
+                                      :assigned="{{ json_encode(optional($data['post']->topic->first())->only(['name', 'slug'])) }}"></topic-select>
                     </div>
                 </div>
                 <div class="form-group row">

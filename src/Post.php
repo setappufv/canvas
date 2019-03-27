@@ -144,7 +144,7 @@ class Post extends Model
     }
 
     /**
-     * Get the human-friendly reading time of a post.
+     * Get the human-friendly estimated reading time of a post.
      *
      * @param $value
      * @return string
@@ -188,7 +188,7 @@ class Post extends Model
             $end_time = $start_time->copy()->addMinutes(60);
 
             // Find the percentage based on the value
-            $percentage = round($value / $data->count() * 100);
+            $percentage = number_format($value / $data->count() * 100, 2);
 
             // Get a human-readable hour range and floating percentage
             $popular_reading_times->put(sprintf('%s - %s', $start_time->format('g:i A'), $end_time->format('g:i A')), $percentage);

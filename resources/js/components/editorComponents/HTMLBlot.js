@@ -1,10 +1,10 @@
 /**
  * Create the HTML blot.
  *
- * @source https://github.com/writingink/wink
+ * @author Mohamed Said <themsaid@gmail.com>
  */
 
-import Quill from 'quill';
+import Quill from 'quill'
 
 let BlockEmbed = Quill.import('blots/block/embed');
 
