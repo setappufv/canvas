@@ -1,17 +1,17 @@
 {
-	"name": "cnvs/canvas",
-	"description": "A Laravel publishing platform",
-	"keywords": ["cnvs", "canvas", "laravel", "publishing"],
+	"name": "setappufv/canvas",
+	"description": "Blog Laravel",
+	"keywords": ["setappufv", "blog", "laravel"],
 	"license": "MIT",
 	"homepage": "https://cnvs.io",
 	"support": {
-		"issues": "https://github.com/cnvs/canvas/issues",
-		"source": "https://github.com/cnvs/canvas"
+		"issues": "https://github.com/setappufv/canvas/issues",
+		"source": "https://github.com/setappufv/canvas"
 	},
 	"authors": [
 		{
-			"name": "Todd Austin",
-			"email": "austin.todd.j@gmail.com"
+			"name": "Alberto E. A. Júnior",
+			"email": "albertoelias.amaral@yahoo.com"
 		}
 	],
 	"require": {
