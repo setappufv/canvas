@@ -3,9 +3,9 @@
 namespace Canvas\Tests\Helpers;
 
 use Canvas\SuffixedNumber;
-use Canvas\Tests\FeatureTestCase;
+use Canvas\Tests\TestCase;
 
-class SuffixedNumberTest extends FeatureTestCase
+class SuffixedNumberTest extends TestCase
 {
     /**
      * @return void
@@ -16,7 +16,7 @@ class SuffixedNumberTest extends FeatureTestCase
     }
 
     /** @test */
-    public function it_can_return_an_unformatted_number()
+    public function return_an_unformatted_number()
     {
         static $number = 899;
 
@@ -24,7 +24,7 @@ class SuffixedNumberTest extends FeatureTestCase
     }
 
     /** @test */
-    public function it_can_return_a_formatted_number_in_thousands()
+    public function return_a_formatted_number_in_thousands()
     {
         static $number = 899999;
 
@@ -32,7 +32,7 @@ class SuffixedNumberTest extends FeatureTestCase
     }
 
     /** @test */
-    public function it_can_return_a_formatted_number_in_millions()
+    public function return_a_formatted_number_in_millions()
     {
         static $number = 899999999;
 
@@ -40,7 +40,7 @@ class SuffixedNumberTest extends FeatureTestCase
     }
 
     /** @test */
-    public function it_can_return_a_formatted_number_in_billions()
+    public function return_a_formatted_number_in_billions()
     {
         static $number = 899999999999;
 
@@ -48,7 +48,7 @@ class SuffixedNumberTest extends FeatureTestCase
     }
 
     /** @test */
-    public function it_can_return_a_formatted_number_in_trillions()
+    public function return_a_formatted_number_in_trillions()
     {
         static $number = 899999999999999;
 

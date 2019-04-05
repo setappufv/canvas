@@ -12,10 +12,10 @@
     <title>@yield('title')</title>
 
     <!-- HighlightJS scripts -->
-    <script src="{{ url('https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.13.1/build/highlight.min.js') }}"></script>
+    <script src="{{ url('https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.6/build/highlight.min.js') }}"></script>
 
     <!-- HighlightJS sheets -->
-    <link rel="stylesheet" href="{{ url('https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.13.1/build/styles/github.min.css') }}">
+    <link rel="stylesheet" href="{{ url('https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.6/build/styles/default.min.css') }}">
 
     <!-- Style sheets -->
     <link rel="stylesheet" type="text/css" href="{{ asset(mix(\Canvas\Canvas::$useDarkMode ? 'css/app-dark.css' : 'css/app.css', 'vendor/canvas')) }}">

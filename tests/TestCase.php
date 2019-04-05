@@ -2,13 +2,15 @@
 
 namespace Canvas\Tests;
 
+use ReflectionClass;
+use ReflectionException;
 use Canvas\CanvasServiceProvider;
-use Orchestra\Testbench\TestCase;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Foundation\Application;
+use Orchestra\Testbench\TestCase as BaseTestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class FeatureTestCase extends TestCase
+abstract class TestCase extends BaseTestCase
 {
     use RefreshDatabase;
 
@@ -78,5 +80,23 @@ class FeatureTestCase extends TestCase
         $this->loadMigrationsFrom(dirname(__DIR__).'/database/migrations');
 
         $this->artisan('migrate');
+    }
+
+    /**
+     * Call the protected or private methods of a class.
+     *
+     * @param $object
+     * @param string $method
+     * @param array $parameters
+     * @return mixed
+     * @throws ReflectionException
+     */
+    protected function invokeMethod(&$object, string $method, array $parameters = [])
+    {
+        $reflection = new ReflectionClass(get_class($object));
+        $method = $reflection->getMethod($method);
+        $method->setAccessible(true);
+
+        return $method->invokeArgs($object, $parameters);
     }
 }

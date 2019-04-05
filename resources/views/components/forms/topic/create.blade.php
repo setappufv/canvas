@@ -9,9 +9,9 @@
                     <input type="text" name="name" v-model="name" title="Name"
                            class="form-control-lg form-control border-0 px-0"
                            value="{{ old('name') }}" required placeholder="Give your topic a name">
-                    @if ($errors->has('name'))
+                    @if ($errors->has('slug'))
                         <div class="invalid-feedback d-block">
-                            <strong>{{ $errors->first('name') }}</strong>
+                            <strong>{{ $errors->first('slug') }}</strong>
                         </div>
                     @endif
                 </div>

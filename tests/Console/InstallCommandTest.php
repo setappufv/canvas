@@ -2,9 +2,9 @@
 
 namespace Canvas\Tests\Console;
 
-use Canvas\Tests\FeatureTestCase;
+use Canvas\Tests\TestCase;
 
-class InstallCommandTest extends FeatureTestCase
+class InstallCommandTest extends TestCase
 {
     /**
      * @return void
@@ -15,7 +15,7 @@ class InstallCommandTest extends FeatureTestCase
     }
 
     /** @test */
-    public function it_can_install_assets_and_configuration()
+    public function install_assets_and_configuration()
     {
         $this->artisan('canvas:install')
             ->expectsOutput('Publishing the assets...')

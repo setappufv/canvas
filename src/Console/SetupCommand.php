@@ -67,7 +67,7 @@ class SetupCommand extends Command
     }
 
     /**
-     * Create the directories for the views.
+     * Create the view directories.
      *
      * @return void
      */
@@ -104,7 +104,7 @@ class SetupCommand extends Command
     }
 
     /**
-     * Compiles the HomeController stub.
+     * Compile the default controller stub.
      *
      * @return string
      */

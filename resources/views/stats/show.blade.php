@@ -64,7 +64,7 @@
                                 </p>
                             </div>
                             <div class="ml-auto">
-                                <span class="text-muted">{{ sprintf('%s%s', $percentage, '%') }}</span>
+                                <span class="text-muted">{{ sprintf('%s%%', $percentage) }}</span>
                             </div>
                         </div>
                     @endforeach

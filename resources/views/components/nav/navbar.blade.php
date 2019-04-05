@@ -47,11 +47,6 @@
                         </div>
                     </div>
                 @endauth
-
-                @guest()
-                    <a href="{{ route('canvas.index') }}" class="nav-link text-secondary my-1 py-2">Sign in</a>
-                    <a href="{{ url('https://cnvs.io') }}" class="btn btn-sm btn-outline-primary">Learn more</a>
-                @endguest
             </nav>
         </div>
     </div>

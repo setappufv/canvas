@@ -10,7 +10,7 @@ use Illuminate\Routing\Controller;
 class TagController extends Controller
 {
     /**
-     * Show a paginated list of tags.
+     * Get all of the tags.
      *
      * @return \Illuminate\View\View
      */
@@ -24,7 +24,7 @@ class TagController extends Controller
     }
 
     /**
-     * Show the form for creating a new tag.
+     * Create a new tag.
      *
      * @return \Illuminate\View\View
      */
@@ -38,7 +38,7 @@ class TagController extends Controller
     }
 
     /**
-     * Show the form for editing a tag.
+     * Edit a given tag.
      *
      * @param string $id
      * @return \Illuminate\View\View
@@ -53,7 +53,7 @@ class TagController extends Controller
     }
 
     /**
-     * Store a newly created tag in storage.
+     * Save a new tag.
      *
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -78,7 +78,7 @@ class TagController extends Controller
     }
 
     /**
-     * Update a tag in storage.
+     * Save a given tag.
      *
      * @param string $id
      * @return \Illuminate\Http\RedirectResponse
@@ -105,7 +105,7 @@ class TagController extends Controller
     }
 
     /**
-     * Soft delete a tag in storage.
+     * Delete a given tag.
      *
      * @param string $id
      * @return \Illuminate\Http\RedirectResponse

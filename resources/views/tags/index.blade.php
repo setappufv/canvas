@@ -49,6 +49,10 @@
                                 </div>
                             </div>
 
+                            <div class="d-flex justify-content-center">
+                                <a href="#!" class="btn btn-link" @click="limit += 10" v-if="load">Show more <i class="fa fa-fw fa-angle-down"></i></a>
+                            </div>
+
                             <p class="mt-4" v-if="!filteredList.length">No tags matched the given search criteria.</p>
                         </div>
                     @else

@@ -4,7 +4,7 @@
 
 @push('meta')
     <!-- Icon -->
-    <link rel="icon" type="image/png" href="{{ mix('favicon.png', 'vendor/canvas') }}">
+    <link rel="shortcut icon" href="{{ mix('favicon.ico', 'vendor/canvas') }}">
 @endpush
 
 @section('body')

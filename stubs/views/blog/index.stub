@@ -57,7 +57,7 @@
                         @if(!$loop->first)
                             <div class="blog-post">
                                 <h2 class="blog-post-title"><a href="{{ route('blog.post', $post->slug) }}" class="text-dark text-decoration-none">{{ $post->title }}</a></h2>
-                                <p class="blog-post-meta small">{{ $post->published_at->format('M d') }} — {{ $post->readTime }}</p>
+                                <p class="blog-post-meta small">{{ $post->published_at->format('M d') }} — {{ $post->read_time }}</p>
                                 <p><a href="{{ route('blog.post', $post->slug) }}" class="text-dark text-decoration-none">{{ $post->summary }}</a></p>
                             </div>
                         @endif

@@ -5,7 +5,7 @@ namespace Canvas;
 class SuffixedNumber
 {
     /**
-     * Return a formatted number with a suffix.
+     * Return a number formatted with a suffix.
      *
      * @param int $n
      * @param int $precision

@@ -19,8 +19,8 @@ class BlogController extends Controller
     {
         $data = [
             'posts'  => Post::published()->orderByDesc('published_at')->simplePaginate(10),
-            'topics' => Topic::all(),
-            'tags'   => Tag::all(),
+            'topics' => Topic::all(['name', 'slug']),
+            'tags'   => Tag::all(['name', 'slug']),
         ];
 
         return view('blog.index', compact('data'));
@@ -94,8 +94,8 @@ class BlogController extends Controller
         if ($tag) {
             $data = [
                 'tag'    => $tag,
-                'tags'   => Tag::all(),
-                'topics' => Topic::all(),
+                'tags'   => Tag::all(['name', 'slug']),
+                'topics' => Topic::all(['name', 'slug']),
                 'posts'  => Post::whereHas('tags', function ($query) use ($slug) {
                     $query->where('slug', $slug);
                 })->published()->orderByDesc('published_at')->simplePaginate(10),
@@ -119,8 +119,8 @@ class BlogController extends Controller
 
         if ($topic) {
             $data = [
-                'tags'   => Tag::all(),
-                'topics' => Topic::all(),
+                'tags'   => Tag::all(['name', 'slug']),
+                'topics' => Topic::all(['name', 'slug']),
                 'topic'  => $topic,
                 'posts'  => Post::whereHas('topic', function ($query) use ($slug) {
                     $query->where('slug', $slug);

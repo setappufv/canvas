@@ -9,20 +9,31 @@ use Illuminate\Routing\Controller;
 class StatsController extends Controller
 {
     /**
-     * The number of days to generate statistics for.
+     * Days in the past to generate statistics for.
      *
      * @const int
      */
     const DAYS_PRIOR = 30;
 
     /**
-     * Show the overall statistics for all posts.
+     * Get all of the posts and views.
      *
      * @return \Illuminate\View\View
      */
     public function index()
     {
-        $posts = Post::withCount('views')->orderByDesc('created_at')->paginate();
+        // Get all of the posts
+        $posts = Post::select('id', 'title', 'body', 'published_at', 'created_at')->withCount('views')->get();
+
+        // Filter out posts that are not published
+        $postList = $posts->filter(function ($value, $key) {
+            return $value->published;
+        });
+
+        // Append the reading time attribute
+        $postList->each->append('read_time');
+
+        // Get views for the last [X] days
         $views = View::whereBetween('created_at', [
             now()->subDays(self::DAYS_PRIOR)->toDateTimeString(),
             now()->toDateTimeString(),
@@ -30,9 +41,9 @@ class StatsController extends Controller
 
         $data = [
             'posts' => [
-                'all'       => $posts,
-                'published' => $posts->where('published_at', '<=', now()->toDateTimeString()),
-                'drafts'    => $posts->where('published_at', '>', now()->toDateTimeString()),
+                'all'             => $posts,
+                'published_count' => $posts->where('published_at', '<=', now()->toDateTimeString())->count(),
+                'drafts_count'    => $posts->where('published_at', '>', now()->toDateTimeString())->count(),
             ],
             'views' => [
                 'count' => $views->count(),
@@ -44,7 +55,7 @@ class StatsController extends Controller
     }
 
     /**
-     * Show data analytics for a single post.
+     * Get the statistics for a given post.
      *
      * @param string $id
      * @return \Illuminate\View\View
@@ -56,9 +67,9 @@ class StatsController extends Controller
         if ($post->published) {
             $data = [
                 'post'                  => $post,
-                'traffic'               => $post->topReferers,
-                'popular_reading_times' => $post->popularReadingTimes,
-                'views'                 => json_encode($post->viewTrend),
+                'traffic'               => $post->top_referers,
+                'popular_reading_times' => $post->popular_reading_times,
+                'views'                 => json_encode($post->view_trend),
             ];
 
             return view('canvas::stats.show', compact('data'));

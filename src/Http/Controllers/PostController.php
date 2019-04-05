@@ -13,21 +13,21 @@ use Illuminate\Routing\Controller;
 class PostController extends Controller
 {
     /**
-     * Show a paginated list of posts.
+     * Get all of the posts.
      *
      * @return \Illuminate\View\View
      */
     public function index()
     {
         $data = [
-            'posts' => Post::orderByDesc('created_at')->with('tags')->get(),
+            'posts' => Post::orderByDesc('created_at')->get(),
         ];
 
         return view('canvas::posts.index', compact('data'));
     }
 
     /**
-     * Show the form for creating a new post.
+     * Create a new post.
      *
      * @return \Illuminate\View\View
      */
@@ -35,15 +35,15 @@ class PostController extends Controller
     {
         $data = [
             'id'     => Str::uuid(),
-            'tags'   => Tag::all(),
-            'topics' => Topic::all(),
+            'tags'   => Tag::all(['name', 'slug']),
+            'topics' => Topic::all(['name', 'slug']),
         ];
 
         return view('canvas::posts.create', compact('data'));
     }
 
     /**
-     * Show the form for editing an existing post.
+     * Edit a given post.
      *
      * @param string $id
      * @return \Illuminate\View\View
@@ -55,15 +55,15 @@ class PostController extends Controller
         $data = [
             'post'   => $post,
             'meta'   => $post->meta,
-            'tags'   => Tag::all(),
-            'topics' => Topic::all(),
+            'tags'   => Tag::all(['name', 'slug']),
+            'topics' => Topic::all(['name', 'slug']),
         ];
 
         return view('canvas::posts.edit', compact('data'));
     }
 
     /**
-     * Store a newly created post in storage.
+     * Save a new post.
      *
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -100,23 +100,19 @@ class PostController extends Controller
         $post->meta = $data['meta'];
         $post->save();
 
-        if (! is_null(request('tags'))) {
-            $post->tags()->sync(
-                $this->collectTags(request('tags') ?? [])
-            );
-        }
+        $post->tags()->sync(
+            $this->collectTags(request('tags') ?? [])
+        );
 
-        if (! is_null(request('topic'))) {
-            $post->topic()->sync(
-                $this->assignTopics([request('topic')] ?? [])
-            );
-        }
+        $post->topic()->sync(
+            $this->assignTopics(request('topic') ? [request('topic')] : [])
+        );
 
         return redirect(route('canvas.post.edit', $post->id))->with('notify', 'Saved!');
     }
 
     /**
-     * Update a post in storage.
+     * Save a given post.
      *
      * @param string $id
      * @return \Illuminate\Http\RedirectResponse
@@ -155,23 +151,19 @@ class PostController extends Controller
         $post->meta = $data['meta'];
         $post->save();
 
-        if (! is_null(request('tags'))) {
-            $post->tags()->sync(
-                $this->collectTags(request('tags') ?? [])
-            );
-        }
+        $post->tags()->sync(
+            $this->collectTags(request('tags') ?? [])
+        );
 
-        if (! is_null(request('topic'))) {
-            $post->topic()->sync(
-                $this->assignTopics([request('topic')] ?? [])
-            );
-        }
+        $post->topic()->sync(
+            $this->assignTopics(request('topic') ? [request('topic')] : [])
+        );
 
         return redirect(route('canvas.post.edit', $post->id))->with('notify', 'Saved!');
     }
 
     /**
-     * Soft delete a post in storage.
+     * Delete a given post.
      *
      * @param string $id
      * @return \Illuminate\Http\RedirectResponse
@@ -185,7 +177,7 @@ class PostController extends Controller
     }
 
     /**
-     * Collect tags from the request.
+     * Collect or create given tags.
      *
      * @param  array $incomingTags
      * @return array
@@ -212,7 +204,7 @@ class PostController extends Controller
     }
 
     /**
-     * Assign a post to a selected topic.
+     * Collect or create given topics.
      *
      * @param array $incomingTopics
      * @return array

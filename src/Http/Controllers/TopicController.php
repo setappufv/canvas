@@ -10,7 +10,7 @@ use Illuminate\Routing\Controller;
 class TopicController extends Controller
 {
     /**
-     * Show a paginated list of topics.
+     * Get all of the topics.
      *
      * @return \Illuminate\View\View
      */
@@ -24,7 +24,7 @@ class TopicController extends Controller
     }
 
     /**
-     * Show the form for creating a new topic.
+     * Create a new topic.
      *
      * @return \Illuminate\View\View
      */
@@ -38,7 +38,7 @@ class TopicController extends Controller
     }
 
     /**
-     * Show the form for editing a topic.
+     * Edit a given topic.
      *
      * @param string $id
      * @return \Illuminate\View\View
@@ -53,7 +53,7 @@ class TopicController extends Controller
     }
 
     /**
-     * Store a newly created topic in storage.
+     * Save a new topic.
      *
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -78,7 +78,7 @@ class TopicController extends Controller
     }
 
     /**
-     * Update a topic in storage.
+     * Save a given topic.
      *
      * @param string $id
      * @return \Illuminate\Http\RedirectResponse
@@ -105,7 +105,7 @@ class TopicController extends Controller
     }
 
     /**
-     * Soft delete a topic in storage.
+     * Delete a given topic.
      *
      * @param string $id
      * @return \Illuminate\Http\RedirectResponse

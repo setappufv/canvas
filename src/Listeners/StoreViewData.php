@@ -43,7 +43,7 @@ class StoreViewData
     }
 
     /**
-     * Add the post ID into the session.
+     * Add a given post to the session.
      *
      * @param Post $post
      * @return void
@@ -51,6 +51,7 @@ class StoreViewData
     private function storeInSession(Post $post)
     {
         $key = 'viewed_posts.'.$post->id;
+
         session()->put($key, time());
     }
 }

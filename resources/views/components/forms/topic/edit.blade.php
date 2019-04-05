@@ -9,9 +9,9 @@
                     <input type="text" name="name" v-model="name" value="{{ $data['topic']->name }}"
                            class="form-control-lg form-control border-0 px-0"
                            title="Name" required placeholder="Give your topic a name">
-                    @if ($errors->has('name'))
+                    @if ($errors->has('slug'))
                         <div class="invalid-feedback d-block">
-                            <strong>{{ $errors->first('name') }}</strong>
+                            <strong>{{ $errors->first('slug') }}</strong>
                         </div>
                     @endif
                 </div>
@@ -20,11 +20,6 @@
                 <div class="col-lg-12">
                     <p class="lead text-muted" style="cursor: default"><span class="text-primary">@{{ slug }}</span></p>
                     <input type="hidden" name="slug" v-model="slug" readonly>
-                    @if ($errors->has('slug'))
-                        <div class="invalid-feedback d-block">
-                            <strong>{{ $errors->first('slug') }}</strong>
-                        </div>
-                    @endif
                 </div>
             </div>
         </div>
