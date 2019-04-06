@@ -4,7 +4,6 @@
 </p>
 
 <p align="center">
-	<a href="https://travis-ci.org/setappufv/canvas"><img src="https://travis-ci.org/setappufv/canvas.svg?branch=master"></a>
 	<a href="https://packagist.org/packages/setappufv/canvas"><img src="https://poser.pugx.org/setappufv/canvas/downloads"></a>
 	<a href="https://packagist.org/packages/setappufv/canvas"><img src="https://poser.pugx.org/setappufv/canvas/v/stable"></a>
 	<a href="https://packagist.org/packages/setappufv/canvas"><img src="https://poser.pugx.org/setappufv/canvas/license"></a>
@@ -17,7 +16,7 @@ Uma plataforma de publicação do [Laravel](https://laravel.com). O CanvasBr é 
 
 ## Instalação
 
-> **Nota:** O Canvas requer que você tenha autenticação de usuário antes da instalação. Você pode executar o comando `make: auth` Artisan para satisfazer este requisito.
+> **Nota:** O CanvasBr requer que você tenha autenticação de usuário antes da instalação. Você pode executar o comando `make: auth` Artisan para satisfazer este requisito.
 
 Você pode usar o [Composer](https://getcomposer.org/) para instalar o CanvasBr no seu projeto do Laravel:
 
@@ -83,4 +82,4 @@ composer test
 ```
 
 ## Licensa
-O Canvas é um software de código aberto licenciado sob a [MIT license](https://opensource.org/licenses/MIT)..
+O Canvas é um software de código aberto licenciado sob a [MIT license](https://opensource.org/licenses/MIT).
