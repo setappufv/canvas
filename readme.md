@@ -4,52 +4,49 @@
 </p>
 
 <p align="center">
-	<a href="https://travis-ci.org/cnvs/canvas"><img src="https://travis-ci.org/cnvs/canvas.svg?branch=master"></a>
-	<a href="https://packagist.org/packages/cnvs/canvas"><img src="https://poser.pugx.org/cnvs/canvas/downloads"></a>
-	<a href="https://packagist.org/packages/cnvs/canvas"><img src="https://poser.pugx.org/cnvs/canvas/v/stable"></a>
-	<a href="https://packagist.org/packages/cnvs/canvas"><img src="https://poser.pugx.org/cnvs/canvas/license"></a>
+	<a href="https://travis-ci.org/setappufv/canvas"><img src="https://travis-ci.org/setappufv/canvas.svg?branch=master"></a>
+	<a href="https://packagist.org/packages/setappufv/canvas"><img src="https://poser.pugx.org/setappufv/canvas/downloads"></a>
+	<a href="https://packagist.org/packages/setappufv/canvas"><img src="https://poser.pugx.org/setappufv/canvas/v/stable"></a>
+	<a href="https://packagist.org/packages/setappufv/canvas"><img src="https://poser.pugx.org/setappufv/canvas/license"></a>
     <br>
 </p>
 
-## Introduction
+## Introdução
 
-A [Laravel](https://laravel.com) publishing platform. Canvas is a fully open source package to extend your 
-application and get you up-and-running with a blog in just a few minutes. In addition to a distraction-free 
-writing experience, you can view monthly trends on your content, get insights into reader traffic and more!
+Uma plataforma de publicação do [Laravel](https://laravel.com). O CanvasBr é um pacote de software totalmente aberto para estender seu aplicativo e colocá-lo em funcionamento com um blog em apenas alguns minutos. Além de uma experiência de escrita livre de distrações, você pode visualizar tendências mensais em seu conteúdo, obter insights sobre o tráfego de leitores e muito mais!
 
-## Installation
+## Instalação
 
-> **Note:** Canvas requires you to have user authentication in place prior to installation. You may run the `make:auth` Artisan command to satisfy this requirement.
+> **Nota:** O Canvas requer que você tenha autenticação de usuário antes da instalação. Você pode executar o comando `make: auth` Artisan para satisfazer este requisito.
 
-You may use composer to install Canvas into your Laravel project:
+Você pode usar o [Composer](https://getcomposer.org/) para instalar o CanvasBr no seu projeto do Laravel:
 
 ```bash
-composer require cnvs/canvas
+composer require setappufv/canvas
 ```
 
-Publish the assets and primary configuration file using the `canvas:install` Artisan command:
+Publique os assets e o arquivo de configuração principal usando o comando `canvas: install` Artisan:
 
 ```bash
 php artisan canvas:install
 ```
 
-Create a symbolic link to ensure file uploads are publicly accessible from the web using the `storage:link` Artisan command:
+Crie um link simbólico para garantir que os uploads de arquivos sejam acessíveis publicamente na Web usando o comando `storage: link` Artisan:
 
 ```bash
 php artisan storage:link
 ```
 
-## Configuration
+## Configuração
 
-> **Note:** You are not required to complete the following steps. You have total design freedom when integrating blog content into your application.
+> **Nota:** Você não é obrigado a concluir as etapas a seguir. Você tem total liberdade de design ao integrar o conteúdo do blog em seu aplicativo.
 
-Generate a default blog controller with routes and views to get up and running as quickly as possible:
+Gere um controlador de blog padrão com rotas e visualizações para começar a funcionar o mais rápido possível:
 
 ```bash
 php artisan canvas:setup
 ```
-
-If you want to include [Unsplash](https://unsplash.com) images in your posts, set up a new application at [https://unsplash.com/oauth/applications](https://unsplash.com/oauth/applications). Grab your access key and update `config/canvas.php`:
+Se você quiser incluir imagens do [Unsplash] (https://unsplash.com) em suas postagens, configure um novo aplicativo em [https://unsplash.com/oauth/applications](https://unsplash.com/oauth/aplicativos). Pegue sua chave de acesso e atualize `config/canvas.php`:
 
 ```php
 'unsplash' => [
@@ -57,34 +54,33 @@ If you want to include [Unsplash](https://unsplash.com) images in your posts, se
 ],
 ```
 
-## Updates
+## Atualizações
 
-You may update your Canvas installation using composer:
+Você pode atualizar sua instalação do Canvas usando o composer:
 
 ```bash
 composer update
 ```
 
-Run any new migrations using the `migrate` Artisan command:
+Execute qualquer nova migração usando o comando `migrate` Artisan:
 
 ```bash
 php artisan migrate
 ```
 
-Re-publish the assets using the `canvas:publish` Artisan command:
+Publique novamente os assets usando o comando `canvas: publish` Artisan:
 
 ```bash
 php artisan canvas:publish
 ```
 
-## Testing
+## Testando
 
-Run the tests with:
+Execute os testes com:
 
 ```bash
 composer test
 ```
 
-## License
-
-Canvas is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Licensa
+O Canvas é um software de código aberto licenciado sob a [MIT license](https://opensource.org/licenses/MIT)..

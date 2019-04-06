@@ -38,7 +38,7 @@
                             <p class="lead my-3"><a href="{{ route('blog.post', $post->slug) }}"
                                                     class="text-white text-decoration-none">{{ $post->summary }}</a></p>
                             <p class="lead mb-0"><a href="{{ route('blog.post', $post->slug) }}"
-                                                    class="text-white font-weight-bold">Continuar lendo...</a></p>
+                                                    class="text-white font-weight-bold">Continue reading...</a></p>
                         </div>
                     </div>
                 @endif
@@ -50,7 +50,7 @@
         <div class="row">
             <div class="col-md-8 blog-main">
                 <h3 class="pb-4 mb-4 font-italic border-bottom">
-                    Posts Recentes
+                    Recent posts
                 </h3>
                 @if(count($data['posts']) > 0)
                     @foreach($data['posts'] as $post)
@@ -65,7 +65,7 @@
 
                     {{ $data['posts']->links() }}
                 @else
-                    <p class="mt-4">Nenhuma postagem foi encontrada, comece agora <a href="{{ route('canvas.post.create') }}">Adicionar uma nova postagem</a>.</p>
+                    <p class="mt-4">No posts were found, start by <a href="{{ route('canvas.post.create') }}">adding a new post</a>.</p>
                 @endif
             </div>
 
