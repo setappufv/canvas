@@ -81,5 +81,30 @@ Execute os testes com:
 composer test
 ```
 
+## Futuras Modificações
+
+> **Esta é uma lista de futuras POSSÍVEIS modificações, nem todas serão implementadas**
+
+<ul>
+    <li> Suporte Multi-Linguagem </li>
+    <li> Criar API para acesso aos POST's </li>
+    <li> Agrupar POST's por AUTOR </li>
+    <li> Upload de Imagem do AUTOR com CROP </li>
+    <li> Slug Automatico de acordo com o Titulo </li>
+    <li> Adicionar Comentários </li>
+    <li> Compartilhar POST's -> Face e Twitter </li>
+    <li> Login com Multiplos Niveis:
+        <ul>
+            <li>Administrador -> Cria novos Colaboradores </li>
+            <li> Colaborador -> Criar Posts, Topicos, Tags e visualizar stats </li>
+            <li> Usuario Premium -> Tem acesso a posts premiuns </li>
+            <li> Usuario Free -> Pode comentar </li>
+            <li> Não Cadastrado -> Visualiza os post </li>
+        </ul>
+    </li>
+    <li> Inscrição de Email </li>
+    <li> Enviar Automatico de Email quando houver conteudo novo </li>
+</ul>
+
 ## Licensa
 O Canvas é um software de código aberto licenciado sob a [MIT license](https://opensource.org/licenses/MIT).
