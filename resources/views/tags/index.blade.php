@@ -1,8 +1,8 @@
-@extends('canvas::index')
+@extends('canvas::layouts.app')
 
 @section('actions')
     <a href="{{ route('canvas.tag.create') }}" class="btn btn-sm btn-outline-primary my-auto mx-3">
-        New tag
+        {{ __('canvas::buttons.tags.create') }}
     </a>
 @endsection
 
@@ -12,7 +12,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-10">
                     <div class="d-flex justify-content-between">
-                        <h1 class="mb-4 mt-2">Tags</h1>
+                        <h1 class="mb-4 mt-2">{{ __('canvas::tags.header') }}</h1>
                         <div class="dropdown my-auto">
                             <a href="#" id="navbarDropdown" class="nav-link px-0 text-secondary pt-0" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre
@@ -26,7 +26,7 @@
                                                type="text"
                                                class="form-control border-0 px-0 py-0"
                                                id="search"
-                                               placeholder="Search..."
+                                               placeholder="{{ __('canvas::tags.search.input') }}..."
                                                autofocus>
                                     </div>
                                 </form>
@@ -44,19 +44,19 @@
                                     </p>
                                 </div>
                                 <div class="ml-auto">
-                                    <span class="text-muted mr-3">@{{ tag.posts_count }} Post(s)</span>
-                                    Created @{{ moment(tag.created_at).fromNow() }}
+                                    <span class="text-muted mr-3">@{{ tag.posts_count }} {{ __('canvas::tags.posts') }}</span>
+                                    {{ __('canvas::tags.details.created') }} @{{ moment(tag.created_at).fromNow() }}
                                 </div>
                             </div>
 
                             <div class="d-flex justify-content-center">
-                                <a href="#!" class="btn btn-link" @click="limit += 10" v-if="load">Show more <i class="fa fa-fw fa-angle-down"></i></a>
+                                <a href="#!" class="btn btn-link" @click="limit += 10" v-if="load">{{ __('canvas::buttons.general.load') }} <i class="fa fa-fw fa-angle-down"></i></a>
                             </div>
 
-                            <p class="mt-4" v-if="!filteredList.length">No tags matched the given search criteria.</p>
+                            <p class="mt-4" v-if="!filteredList.length">{{ __('canvas::tags.search.empty') }}</p>
                         </div>
                     @else
-                        <p class="mt-4">No tags were found, start by <a href="{{ route('canvas.tag.create') }}">adding a new tag</a>.</p>
+                        <p class="mt-4">{{ __('canvas::tags.empty.description') }} <a href="{{ route('canvas.tag.create') }}">{{ __('canvas::tags.empty.action') }}</a>.</p>
                     @endif
                 </div>
             </div>

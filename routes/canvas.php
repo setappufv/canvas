@@ -15,7 +15,7 @@ Route::put('posts/{id}', 'PostController@update')->name('canvas.post.update');
 Route::delete('posts/{id}', 'PostController@destroy')->name('canvas.post.destroy');
 
 // Media routes...
-Route::post('media/uploads', 'MediaController@store')->name('canvas.media.store');
+Route::post('media/uploads', 'MediaController')->name('canvas.media.store');
 
 // Tag routes...
 Route::get('tags', 'TagController@index')->name('canvas.tag.index');
@@ -32,3 +32,6 @@ Route::post('topics', 'TopicController@store')->name('canvas.topic.store');
 Route::get('topics/{id}/edit', 'TopicController@edit')->name('canvas.topic.edit');
 Route::put('topics/{id}', 'TopicController@update')->name('canvas.topic.update');
 Route::delete('topics/{id}', 'TopicController@destroy')->name('canvas.topic.destroy');
+
+// Localization routes...
+Route::get('lang', 'LangController')->name('canvas.lang');

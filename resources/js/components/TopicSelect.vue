@@ -1,8 +1,40 @@
-<script type="text/ecmascript-6">
+<template>
+    <div v-cloak>
+        <multiselect
+                v-model="value"
+                :placeholder="this.trans.topics.forms.select"
+                :tag-placeholder="this.trans.topics.forms.tag"
+                label="name"
+                track-by="slug"
+                :options="options"
+                :taggable="true"
+                @input="onChange"
+                @tag="addTopic">
+        </multiselect>
+
+        <div class="topics">
+            <template v-if="value.length !== 0">
+                <input hidden type="hidden" :name="`topic[name]`" :value="value.name">
+                <input hidden type="hidden" :name="`topic[slug]`" :value="value.slug">
+            </template>
+        </div>
+    </div>
+</template>
+
+<script>
     import Multiselect from 'vue-multiselect'
 
     export default {
-        props: ['topics', 'assigned'],
+        props: {
+            topics: {
+                type: Array,
+                required: false
+            },
+            assigned: {
+                type: Object,
+                required: false
+            }
+        },
 
         components: {
             Multiselect
@@ -20,7 +52,8 @@
 
             return {
                 value: this.assigned ? this.assigned : [],
-                options: allTopics
+                options: allTopics,
+                trans: i18n
             }
         },
 
@@ -60,27 +93,51 @@
     }
 </script>
 
-<template>
-    <div>
-        <multiselect
-                v-model="value"
-                placeholder="Select a topic..."
-                tag-placeholder="Add this as new topic"
-                label="name"
-                track-by="slug"
-                :options="options"
-                :taggable="true"
-                @input="onChange"
-                @tag="addTopic">
-        </multiselect>
+<style>
+    @import "~vue-multiselect/dist/vue-multiselect.min.css";
 
-        <div class="topics">
-            <template v-if="value.length != 0">
-                <input hidden type="hidden" :name="`topic[name]`" :value="value.name">
-                <input hidden type="hidden" :name="`topic[slug]`" :value="value.slug">
-            </template>
-        </div>
-    </div>
-</template>
+    .multiselect__select {
+        display: none;
+    }
 
-<style rel="stylesheet" type="text/css" src="vue-multiselect/dist/vue-multiselect.min.css"></style>
+    .multiselect__tags {
+        border: none;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .multiselect__tag,
+    .multiselect__option--highlight,
+    .multiselect__option--highlight::after,
+    .multiselect__tag-icon:focus,
+    .multiselect__tag-icon:hover {
+        background: #3490dc;
+    }
+
+    .multiselect,
+    .multiselect__input,
+    .multiselect__single {
+        font-size: 14px;
+        padding: 0;
+        border-radius: 0;
+    }
+
+    .multiselect__input:focus::placeholder,
+    .multiselect__input:focus::-webkit-input-placeholder,
+    .multiselect__input::placeholder,
+    .multiselect__input::-webkit-input-placeholder,
+    .multiselect__placeholder {
+        color: #6c757d;
+        opacity: 1;
+        padding-top: 0;
+        line-height: 1;
+    }
+
+    .multiselect__input {
+        line-height: 1;
+    }
+
+    .multiselect__tag {
+        padding-bottom: 2px;
+    }
+</style>

@@ -13,7 +13,7 @@ class StatsController extends Controller
      *
      * @const int
      */
-    const DAYS_PRIOR = 30;
+    private const DAYS_PRIOR = 30;
 
     /**
      * Get all of the posts and views.
@@ -23,7 +23,11 @@ class StatsController extends Controller
     public function index()
     {
         // Get all of the posts
-        $posts = Post::select('id', 'title', 'body', 'published_at', 'created_at')->withCount('views')->get();
+        $posts = Post::published()
+            ->orderByDesc('created_at')
+            ->select('id', 'title', 'body', 'published_at', 'created_at')
+            ->withCount('views')
+            ->get();
 
         // Filter out posts that are not published
         $postList = $posts->filter(function ($value, $key) {

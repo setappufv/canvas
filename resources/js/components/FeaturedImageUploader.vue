@@ -1,18 +1,59 @@
-<script type="text/ecmascript-6">
+<template>
+    <div v-cloak>
+        <div v-if="imageUrl" id="current-image">
+            <img :src="imageUrl" class="w-100">
 
+            <div class="input-group py-2">
+                <input type="text" class="form-control border-0 px-0"
+                       name="featured_image_caption"
+                       title="Featured Image Caption"
+                       v-model="imageCaption"
+                       :placeholder="this.trans.posts.forms.editor.images.picker.uploader.caption.placeholder" >
+            </div>
+        </div>
+
+        <input hidden type="hidden" name="featured_image" v-model="imageUrl">
+
+        <image-picker
+                @changed="updateImage"
+                @uploading="uploading = true"
+                :unsplash="this.unsplash">
+        </image-picker>
+    </div>
+</template>
+
+<script>
     /**
      * Upload a featured image.
      *
      * @author Mohamed Said <themsaid@gmail.com>
      */
     export default {
-        props: ['post', 'url', 'caption', 'unsplash'],
+        props: {
+            post: {
+                type: String,
+                required: true
+            },
+            url: {
+                type: String,
+                required: false
+            },
+            caption: {
+                type: String,
+                default: ''
+            },
+            unsplash: {
+                type: String,
+                required: false
+            },
+        },
 
         data() {
             return {
                 imageUrl: '',
                 imageCaption: '',
                 uploading: false,
+                trans: i18n
             }
         },
 
@@ -44,27 +85,3 @@
         }
     }
 </script>
-
-<template>
-    <div>
-        <div v-if="imageUrl" id="current-image">
-            <img :src="imageUrl" class="w-100">
-
-            <div class="input-group py-2">
-                <input type="text" class="form-control border-0 px-0"
-                       name="featured_image_caption"
-                       title="Featured Image Caption"
-                       v-model="imageCaption"
-                       placeholder="Add a caption for your image">
-            </div>
-        </div>
-
-        <input hidden type="hidden" name="featured_image" v-model="imageUrl">
-
-        <image-picker
-                @changed="updateImage"
-                @uploading="uploading = true"
-                :unsplash="this.unsplash">
-        </image-picker>
-    </div>
-</template>

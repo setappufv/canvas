@@ -8,8 +8,12 @@ window._ = require('lodash');
 
 try {
     window.Popper = require('popper.js').default;
+
     window.$ = window.jQuery = require('jquery');
+
     window.autosize = window.autosize ? window.autosize : require('autosize');
+
+    window.trans = (string) => _.get(window.i18n, string);
 
     /**
      * Current workaround for using the Autosize library which will only resize
@@ -37,7 +41,6 @@ try {
     });
 
     require('bootstrap');
-    require('@fortawesome/fontawesome-free');
 } catch (e) {
 }
 

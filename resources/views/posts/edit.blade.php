@@ -1,9 +1,11 @@
-@extends('canvas::index')
+@extends('canvas::layouts.app')
 
-@section('context', $data['post']->published ? 'Published' : 'Draft')
+@section('context', $data['post']->published ? __('canvas::nav.context.published') : __('canvas::nav.context.draft'))
 
 @section('actions')
-    <a href="#" class="btn btn-sm btn-outline-primary my-auto" data-toggle="modal" data-target="#modal-publish">Save and publish</a>
+    <a href="#" class="btn btn-sm btn-outline-primary my-auto" data-toggle="modal" data-target="#modal-publish">
+        {{ __('canvas::buttons.posts.save') }}
+    </a>
 
     <div class="dropdown">
         <a id="navbarDropdown" class="nav-link px-3 text-secondary" href="#" role="button" data-toggle="dropdown"
@@ -12,13 +14,23 @@
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
             @if($data['post']->published)
-                <a href="{{ route('canvas.stats.show', $data['post']->id) }}" class="dropdown-item">View stats</a>
+                <a href="{{ route('canvas.stats.show', $data['post']->id) }}" class="dropdown-item">
+                    {{ __('canvas::nav.controls.stats') }}
+                </a>
                 <div class="dropdown-divider"></div>
             @endif
-            <a href="#" class="dropdown-item" data-toggle="modal" data-target="#modal-settings">General settings</a>
-            <a href="#" class="dropdown-item" data-toggle="modal" data-target="#modal-image">Featured image</a>
-            <a href="#" class="dropdown-item" data-toggle="modal" data-target="#modal-seo">SEO & Social</a>
-            <a href="#" class="dropdown-item text-danger" data-toggle="modal" data-target="#modal-delete">Delete</a>
+            <a href="#" class="dropdown-item" data-toggle="modal" data-target="#modal-settings">
+                {{ __('canvas::nav.controls.settings') }}
+            </a>
+            <a href="#" class="dropdown-item" data-toggle="modal" data-target="#modal-image">
+                {{ __('canvas::nav.controls.image') }}
+            </a>
+            <a href="#" class="dropdown-item" data-toggle="modal" data-target="#modal-seo">
+                {{ __('canvas::nav.controls.seo') }}
+            </a>
+            <a href="#" class="dropdown-item text-danger" data-toggle="modal" data-target="#modal-delete">
+                {{ __('canvas::buttons.general.delete') }}
+            </a>
         </div>
     </div>
 @endsection

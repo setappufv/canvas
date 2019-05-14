@@ -21,7 +21,7 @@ class SetupCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Generate a default controller with blog views and routes';
+    protected $description = 'Scaffold basic blog views and routes';
 
     /**
      * The views that need to be exported.

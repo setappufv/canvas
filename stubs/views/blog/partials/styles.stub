@@ -228,6 +228,7 @@
 
     .content-body .embedded_image[data-layout="wide"] img {
         max-width: 1024px;
+        margin: 0 auto 30px;
     }
 
     div.content-body.serif.mt-4.pb-3 > div.embedded_image[data-layout=wide] {

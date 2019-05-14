@@ -7,10 +7,10 @@ use ReflectionException;
 use Canvas\CanvasServiceProvider;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Foundation\Application;
-use Orchestra\Testbench\TestCase as BaseTestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Orchestra\Testbench\TestCase as OrchestraTestCase;
 
-abstract class TestCase extends BaseTestCase
+abstract class TestCase extends OrchestraTestCase
 {
     use RefreshDatabase;
 
