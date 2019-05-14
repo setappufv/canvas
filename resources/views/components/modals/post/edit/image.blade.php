@@ -2,7 +2,7 @@
     <div class="modal-dialog" id="featured-image-unsplash-modal" role="document">
         <div class="modal-content">
             <div class="modal-body">
-                <p class="font-weight-bold lead">Featured image</p>
+                <p class="font-weight-bold lead">{{ __('canvas::posts.forms.image.header') }}</p>
 
                 <featured-image-uploader
                         :post="'{{ $data['post']->id }}'"
@@ -12,7 +12,7 @@
                 </featured-image-uploader>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-link text-muted" data-dismiss="modal">Done</button>
+                <button class="btn btn-link text-muted" data-dismiss="modal">{{ __('canvas::buttons.general.done') }}</button>
             </div>
         </div>
     </div>

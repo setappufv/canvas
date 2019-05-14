@@ -65,16 +65,20 @@ class TopicController extends Controller
             'slug' => request('slug'),
         ];
 
+        $messages = [
+            'unique' => __('canvas::validation.unique'),
+        ];
+
         validator($data, [
             'name' => 'required',
             'slug' => 'required|'.Rule::unique('canvas_topics', 'slug')->ignore(request('id')).'|regex:/^[a-z0-9]+(?:-[a-z0-9]+)*$/i',
-        ])->validate();
+        ], $messages)->validate();
 
         $topic = new Topic(['id' => request('id')]);
         $topic->fill($data);
         $topic->save();
 
-        return redirect(route('canvas.topic.edit', $topic->id))->with('notify', 'Saved!');
+        return redirect(route('canvas.topic.edit', $topic->id))->with('notify', __('canvas::nav.notify.success'));
     }
 
     /**
@@ -93,15 +97,19 @@ class TopicController extends Controller
             'slug' => request('slug'),
         ];
 
+        $messages = [
+            'unique' => __('canvas::validation.unique'),
+        ];
+
         validator($data, [
             'name' => 'required',
             'slug' => 'required|'.Rule::unique('canvas_topics', 'slug')->ignore(request('id')).'|regex:/^[a-z0-9]+(?:-[a-z0-9]+)*$/i',
-        ])->validate();
+        ], $messages)->validate();
 
         $topic->fill($data);
         $topic->save();
 
-        return redirect(route('canvas.topic.edit', $topic->id))->with('notify', 'Saved!');
+        return redirect(route('canvas.topic.edit', $topic->id))->with('notify', __('canvas::nav.notify.success'));
     }
 
     /**

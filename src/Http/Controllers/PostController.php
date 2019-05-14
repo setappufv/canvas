@@ -88,12 +88,16 @@ class PostController extends Controller
             ],
         ];
 
+        $messages = [
+            'unique' => __('canvas::validation.unique'),
+        ];
+
         validator($data, [
             'title'        => 'required',
             'slug'         => 'required|'.Rule::unique('canvas_posts', 'slug')->ignore(request('id')).'|regex:/^[a-z0-9]+(?:-[a-z0-9]+)*$/i',
             'published_at' => 'required|date',
             'user_id'      => 'required',
-        ])->validate();
+        ], $messages)->validate();
 
         $post = new Post(['id' => request('id')]);
         $post->fill($data);
@@ -105,10 +109,10 @@ class PostController extends Controller
         );
 
         $post->topic()->sync(
-            $this->assignTopics(request('topic') ? [request('topic')] : [])
+            $this->assignTopic(request('topic') ?? [])
         );
 
-        return redirect(route('canvas.post.edit', $post->id))->with('notify', 'Saved!');
+        return redirect(route('canvas.post.edit', $post->id))->with('notify', __('canvas::nav.notify.success'));
     }
 
     /**
@@ -128,7 +132,7 @@ class PostController extends Controller
             'summary'                => request('summary', null),
             'body'                   => request('body', null),
             'published_at'           => Carbon::parse(request('published_at'))->toDateTimeString(),
-            'featured_image'         => request('featured_image', $post->featured_image),
+            'featured_image'         => request('featured_image', null),
             'featured_image_caption' => request('featured_image_caption', null),
             'user_id'                => $post->user->id,
             'meta'                   => [
@@ -140,12 +144,16 @@ class PostController extends Controller
             ],
         ];
 
+        $messages = [
+            'unique' => __('canvas::validation.unique'),
+        ];
+
         validator($data, [
             'title'        => 'required',
             'slug'         => 'required|'.Rule::unique('canvas_posts', 'slug')->ignore($id).'|regex:/^[a-z0-9]+(?:-[a-z0-9]+)*$/i',
             'published_at' => 'required',
             'user_id'      => 'required',
-        ])->validate();
+        ], $messages)->validate();
 
         $post->fill($data);
         $post->meta = $data['meta'];
@@ -156,10 +164,10 @@ class PostController extends Controller
         );
 
         $post->topic()->sync(
-            $this->assignTopics(request('topic') ? [request('topic')] : [])
+            $this->assignTopic(request('topic') ?? [])
         );
 
-        return redirect(route('canvas.post.edit', $post->id))->with('notify', 'Saved!');
+        return redirect(route('canvas.post.edit', $post->id))->with('notify', __('canvas::nav.notify.success'));
     }
 
     /**
@@ -204,19 +212,15 @@ class PostController extends Controller
     }
 
     /**
-     * Collect or create given topics.
+     * Assign a given topic.
      *
-     * @param array $incomingTopics
-     * @return array
-     *
-     * @author Mohamed Said <themsaid@gmail.com>
+     * @param $incomingTopic
+     * @return mixed
      */
-    private function assignTopics(array $incomingTopics): array
+    private function assignTopic(array $incomingTopic)
     {
-        $topics = Topic::all();
-
-        return collect($incomingTopics)->map(function ($incomingTopic) use ($topics) {
-            $topic = $topics->where('slug', $incomingTopic['slug'])->first();
+        if ($incomingTopic) {
+            $topic = Topic::where('slug', $incomingTopic['slug'])->first();
 
             if (! $topic) {
                 $topic = Topic::create([
@@ -226,7 +230,9 @@ class PostController extends Controller
                 ]);
             }
 
-            return (string) $topic->id;
-        })->toArray();
+            return collect((string) $topic->id)->toArray();
+        } else {
+            return [];
+        }
     }
 }

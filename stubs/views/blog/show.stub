@@ -27,14 +27,14 @@
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <a href="{{ route('canvas.post.edit', $data['post']->id) }}"
-               class="dropdown-item sans-serif">Edit post</a>
+               class="dropdown-item sans-serif">{{ __('canvas::blog.buttons.edit') }}</a>
             <a href="{{ route('canvas.stats.show', $data['post']->id) }}"
-               class="dropdown-item sans-serif">View stats</a>
+               class="dropdown-item sans-serif">{{ __('canvas::blog.buttons.stats') }}</a>
         </div>
     </div>
 @endsection
 
-@section('body')
+@section('content')
     <div class="container">
         @include('blog.partials.navbar')
 
@@ -82,8 +82,9 @@
                 <div class="col-lg bg-light text-center px-lg-5 py-5"
                      @if(!empty($data['next']->featured_image)) style="background: linear-gradient(rgba(0, 0, 0, 0.8),rgba(0, 0, 0, 0.8)),url({{ $data['next']->featured_image }}); background-size: cover" @endif>
                     <a href="{{ route('blog.post', $data['next']->slug) }}"
-                       class="btn btn-sm @if(!empty($data['next']->featured_image)) btn-outline-light @else btn-outline-secondary @endif text-uppercase font-weight-bold mt-3">Read
-                        this next</a>
+                       class="btn btn-sm @if(!empty($data['next']->featured_image)) btn-outline-light @else btn-outline-secondary @endif text-uppercase font-weight-bold mt-3">
+                        {{ __('canvas::blog.buttons.next') }}
+                    </a>
                     <h2 class="font-weight-bold serif my-3 @if(!empty($data['next']->featured_image)) text-white @endif">
                         <a href="{{ route('blog.post', $data['next']->slug) }}"
                            class="title">{{ $data['next']->title }}</a></h2>
@@ -94,8 +95,9 @@
                 <div class="col-lg bg-light text-center px-lg-5 py-5"
                      @if(!empty($data['random']->featured_image)) style="background: linear-gradient(rgba(0, 0, 0, 0.8),rgba(0, 0, 0, 0.8)),url({{ $data['random']->featured_image }}); background-size: cover" @endif>
                     <a href="{{ route('blog.post', $data['random']->slug) }}"
-                       class="btn btn-sm @if(!empty($data['random']->featured_image)) btn-outline-light @else btn-outline-secondary @endif text-uppercase font-weight-bold mt-3">You
-                        might enjoy</a>
+                       class="btn btn-sm @if(!empty($data['random']->featured_image)) btn-outline-light @else btn-outline-secondary @endif text-uppercase font-weight-bold mt-3">
+                        {{ __('canvas::blog.buttons.enjoy') }}
+                    </a>
                     <h2 class="font-weight-bold serif my-3 @if(!empty($data['random']->featured_image)) text-white @endif">
                         <a href="{{ route('blog.post', $data['random']->slug) }}"
                            class="title">{{ $data['random']->title }}</a></h2>
@@ -110,6 +112,12 @@
     <script type="text/javascript">
         $(function() {
             mediumZoom('.embedded_image img');
+        });
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+            document.querySelectorAll('pre').forEach((block) => {
+                hljs.highlightBlock(block);
+            });
         });
     </script>
 @endpush

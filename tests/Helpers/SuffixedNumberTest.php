@@ -24,6 +24,14 @@ class SuffixedNumberTest extends TestCase
     }
 
     /** @test */
+    public function return_a_precision_formatted_number()
+    {
+        static $number = 12345;
+
+        $this->assertEquals('12.345K', SuffixedNumber::format($number, 3));
+    }
+
+    /** @test */
     public function return_a_formatted_number_in_thousands()
     {
         static $number = 899999;

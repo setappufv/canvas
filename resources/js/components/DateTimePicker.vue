@@ -1,4 +1,43 @@
-<script type="text/ecmascript-6">
+<template>
+    <div v-cloak>
+        <div class="d-flex flex-row">
+            <select class="input pr-2"
+                    v-model="dateComponents.month">
+                <option v-for="value in Array.from({length: 12}, (_, i) => String(i + 1).padStart(2, '0'))"
+                        :value="value">{{ value }}
+                </option>
+            </select>
+            <span class="px-1">/</span>
+            <select class="input px-2" v-model="dateComponents.day">
+                <option v-for="value in Array.from({length: 31}, (_, i) => String(i + 1).padStart(2, '0'))"
+                        :value="value">{{ value }}
+                </option>
+            </select>
+            <span class="px-1">/</span>
+            <select class="input px-2" v-model="dateComponents.year">
+                <option v-for="value in Array.from({length: 15}, (_, i) => i + (new Date()).getFullYear() - 10)"
+                        :value="value">{{ value }}
+                </option>
+            </select>
+            <span class="pl-3"> </span>
+            <select class="input px-2" v-model="dateComponents.hour">
+                <option v-for="value in Array.from({length: 24}, (_, i) => String(i).padStart(2, '0'))" :value="value">
+                    {{ value }}
+                </option>
+            </select>
+            <span class="px-1">:</span>
+            <select class="input pl-2" v-model="dateComponents.minute">
+                <option v-for="value in Array.from({length: 60}, (_, i) => String(i).padStart(2, '0'))" :value="value">
+                    {{ value }}
+                </option>
+            </select>
+        </div>
+
+        <input hidden type="hidden" name="published_at" v-model="result">
+    </div>
+</template>
+
+<script>
     import moment from 'moment'
 
     /**
@@ -7,7 +46,12 @@
      * @author Mohamed Said <themsaid@gmail.com>
      */
     export default {
-        props: ['value'],
+        props: {
+            value: {
+                type: String,
+                required: true
+            }
+        },
 
         data() {
             return {
@@ -57,45 +101,6 @@
         }
     }
 </script>
-
-<template>
-    <div>
-        <div class="d-flex flex-row">
-            <select class="input pr-2"
-                    v-model="dateComponents.month">
-                <option v-for="value in Array.from({length: 12}, (_, i) => String(i + 1).padStart(2, '0'))"
-                        :value="value">{{ value }}
-                </option>
-            </select>
-            <span class="px-1">/</span>
-            <select class="input px-2" v-model="dateComponents.day">
-                <option v-for="value in Array.from({length: 31}, (_, i) => String(i + 1).padStart(2, '0'))"
-                        :value="value">{{ value }}
-                </option>
-            </select>
-            <span class="px-1">/</span>
-            <select class="input px-2" v-model="dateComponents.year">
-                <option v-for="value in Array.from({length: 15}, (_, i) => i + (new Date()).getFullYear() - 10)"
-                        :value="value">{{ value }}
-                </option>
-            </select>
-            <span class="pl-3"> </span>
-            <select class="input px-2" v-model="dateComponents.hour">
-                <option v-for="value in Array.from({length: 24}, (_, i) => String(i).padStart(2, '0'))" :value="value">
-                    {{ value }}
-                </option>
-            </select>
-            <span class="px-1">:</span>
-            <select class="input pl-2" v-model="dateComponents.minute">
-                <option v-for="value in Array.from({length: 60}, (_, i) => String(i).padStart(2, '0'))" :value="value">
-                    {{ value }}
-                </option>
-            </select>
-        </div>
-
-        <input hidden type="hidden" name="published_at" v-model="result">
-    </div>
-</template>
 
 <style scoped>
     select {

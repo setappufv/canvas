@@ -2,14 +2,14 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-body">
-                <p class="font-weight-bold lead">General settings</p>
+                <p class="font-weight-bold lead">{{ __('canvas::posts.forms.settings.header') }}</p>
 
                 <div class="form-group row">
                     <div class="col-12">
-                        <label for="published_at" class="font-weight-bold">Slug</label>
+                        <label for="slug" class="font-weight-bold">{{ __('canvas::posts.forms.settings.slug.label') }}</label>
                         <input type="text" class="form-control border-0 px-0"
-                               name="slug" title="Slug" value="{{ $data['post']->slug }}" required
-                               placeholder="a-unique-slug">
+                               name="slug" title="{{ __('canvas::posts.forms.settings.slug.label') }}" value="{{ $data['post']->slug }}" required
+                               placeholder="{{ __('canvas::posts.forms.settings.slug.placeholder') }}">
                         @if ($errors->has('slug'))
                             <div class="invalid-feedback d-block">
                                 <strong>{{ $errors->first('slug') }}</strong>
@@ -19,30 +19,31 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-12">
-                        <label for="summary" class="font-weight-bold">Summary</label>
+                        <label for="summary" class="font-weight-bold">{{ __('canvas::posts.forms.settings.summary.label') }}</label>
                         <textarea name="summary" class="form-control border-0 px-0"
-                                  placeholder="A descriptive summary.." rows="1"
-                                  title="Summary">{{ $data['post']->summary }}</textarea>
+                                  placeholder="{{ __('canvas::posts.forms.settings.summary.placeholder') }}" rows="1"
+                                  title="{{ __('canvas::posts.forms.settings.summary.label') }}">{{ $data['post']->summary }}</textarea>
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-12">
-                        <label for="topic" class="font-weight-bold">Topic</label>
+                        <label for="topic" class="font-weight-bold">{{ __('canvas::posts.forms.settings.topic.label') }}</label>
 
                         <topic-select :topics="{{ $data['topics'] }}"
-                                      :assigned="{{ json_encode(optional($data['post']->topic->first())->only(['name', 'slug'])) }}"></topic-select>
+                                      :assigned="{{ json_encode(optional($data['post']->topic->first())->only(['name', 'slug'])) }}">
+                        </topic-select>
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-12">
-                        <label for="published_at" class="font-weight-bold">Tags</label>
+                        <label for="published_at" class="font-weight-bold">{{ __('canvas::posts.forms.settings.tags.label') }}</label>
 
                         <tag-select :tags="{{ $data['tags'] }}" :tagged="{{ $data['post']->tags }}"></tag-select>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-link text-muted" data-dismiss="modal">Done</button>
+                <button class="btn btn-link text-muted" data-dismiss="modal">{{ __('canvas::buttons.general.done') }}</button>
             </div>
         </div>
     </div>

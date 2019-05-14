@@ -2,13 +2,13 @@
     @csrf
     <input type="hidden" name="id" hidden value="{{ $data['id'] }}">
 
-    <slug inline-template>
+    <slug-component inline-template>
         <div v-cloak>
             <div class="form-group row my-5">
                 <div class="col-lg-12">
                     <input type="text" name="name" v-model="name" title="Name"
                            class="form-control-lg form-control border-0 px-0"
-                           value="{{ old('name') }}" required placeholder="Give your tag a name">
+                           value="{{ old('name') }}" required placeholder="{{ __('canvas::tags.forms.placeholder') }}">
                     @if ($errors->has('slug'))
                         <div class="invalid-feedback d-block">
                             <strong>{{ $errors->first('slug') }}</strong>
@@ -23,5 +23,5 @@
                 </div>
             </div>
         </div>
-    </slug>
+    </slug-component>
 </form>

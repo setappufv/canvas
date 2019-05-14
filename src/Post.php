@@ -120,21 +120,19 @@ class Post extends Model
     /**
      * Get the user who authored the post.
      *
-     * @param $value
      * @return User
      */
-    public function getAuthorAttribute($value): User
+    public function getAuthorAttribute(): User
     {
-        return User::find($this->user_id);
+        return $this->user;
     }
 
     /**
      * Check to see if the post is published.
      *
-     * @param $value
      * @return bool
      */
-    public function getPublishedAttribute($value): bool
+    public function getPublishedAttribute(): bool
     {
         if ($this->published_at <= now()->toDateTimeString()) {
             return true;
@@ -146,10 +144,9 @@ class Post extends Model
     /**
      * Get the human-friendly estimated reading time of a post.
      *
-     * @param $value
      * @return string
      */
-    public function getReadTimeAttribute($value): string
+    public function getReadTimeAttribute(): string
     {
         // Only count words in our estimation
         $words = str_word_count(strip_tags($this->body));
@@ -157,19 +154,18 @@ class Post extends Model
         // Divide by the average number of words per minute
         $minutes = ceil($words / 250);
 
-        return sprintf('%d %s read', $minutes, Str::plural('min', $minutes));
+        return sprintf('%d %s %s', $minutes, Str::plural(__('canvas::stats.details.reading.time'), $minutes), __('canvas::stats.details.reading.read'));
     }
 
     /**
      * Get the 10 most popular reading times rounded to the nearest 30 minutes.
      *
-     * @param $value
      * @return array
      */
-    public function getPopularReadingTimesAttribute($value): array
+    public function getPopularReadingTimesAttribute(): array
     {
         // Get the views associated with the post
-        $data = View::where('post_id', $this->id)->get();
+        $data = $this->views;
 
         // Filter the view data to only include hours:minutes
         $collection = collect();
@@ -182,7 +178,6 @@ class Post extends Model
 
         $popular_reading_times = collect();
         foreach ($filtered as $key => $value) {
-
             // Use each given time to create a 60 min range
             $start_time = Carbon::createFromTimeString($key);
             $end_time = $start_time->copy()->addMinutes(60);
@@ -191,7 +186,10 @@ class Post extends Model
             $percentage = number_format($value / $data->count() * 100, 2);
 
             // Get a human-readable hour range and floating percentage
-            $popular_reading_times->put(sprintf('%s - %s', $start_time->format('g:i A'), $end_time->format('g:i A')), $percentage);
+            $popular_reading_times->put(
+                sprintf('%s - %s', $start_time->format('g:i A'), $end_time->format('g:i A')),
+                $percentage
+            );
         }
 
         // Cast the collection to an array
@@ -209,10 +207,9 @@ class Post extends Model
     /**
      * Get the top 10 referring websites for a post.
      *
-     * @param $value
      * @return array
      */
-    public function getTopReferersAttribute($value): array
+    public function getTopReferersAttribute(): array
     {
         // Get the views associated with the post
         $data = $this->views;
@@ -220,7 +217,7 @@ class Post extends Model
         // Filter the view data to only include referrers
         $collection = collect();
         $data->each(function ($item, $key) use ($collection) {
-            is_null($item->referer) ? $collection->push('Other') : $collection->push(parse_url($item->referer)['host']);
+            is_null($item->referer) ? $collection->push(__('canvas::stats.details.referer.other')) : $collection->push(parse_url($item->referer)['host']);
         });
 
         // Count the unique values and assign to their respective keys
@@ -238,10 +235,9 @@ class Post extends Model
     /**
      * Return a view count for the last 30 days.
      *
-     * @param $value
      * @return array
      */
-    public function getViewTrendAttribute($value): array
+    public function getViewTrendAttribute(): array
     {
         // Get the views associated with the post
         $data = $this->views;

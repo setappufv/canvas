@@ -1,18 +1,27 @@
-@extends('canvas::index')
+@extends('canvas::layouts.app')
 
-@section('context', 'Draft')
+@section('context', __('canvas::nav.context.draft'))
 
 @section('actions')
-    <a href="#" class="btn btn-sm btn-outline-primary my-auto" data-toggle="modal" data-target="#modal-publish">@lang('posts.create.save_publish')</a>
+    <a href="#" class="btn btn-sm btn-outline-primary my-auto" data-toggle="modal" data-target="#modal-publish">
+        {{ __('canvas::buttons.posts.save') }}
+    </a>
+
     <div class="dropdown">
         <a id="navbarDropdown" class="nav-link px-3 text-secondary" href="#" role="button" data-toggle="dropdown"
            aria-haspopup="true" aria-expanded="false" v-pre>
             <i class="fas fa-sliders-h fa-fw fa-rotate-270"></i>
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-            <a href="#" class="dropdown-item" data-toggle="modal" data-target="#modal-settings">General settings</a>
-            <a href="#" class="dropdown-item" data-toggle="modal" data-target="#modal-image">Featured image</a>
-            <a href="#" class="dropdown-item" data-toggle="modal" data-target="#modal-seo">SEO & Social</a>
+            <a href="#" class="dropdown-item" data-toggle="modal" data-target="#modal-settings">
+                {{ __('canvas::nav.controls.settings') }}
+            </a>
+            <a href="#" class="dropdown-item" data-toggle="modal" data-target="#modal-image">
+                {{ __('canvas::nav.controls.image') }}
+            </a>
+            <a href="#" class="dropdown-item" data-toggle="modal" data-target="#modal-seo">
+                {{ __('canvas::nav.controls.seo') }}
+            </a>
         </div>
     </div>
 @endsection

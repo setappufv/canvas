@@ -2,13 +2,13 @@
     @method('PUT')
     @csrf
 
-    <slug :model="{{ $data['topic'] }}" inline-template>
+    <slug-component :model="{{ $data['topic'] }}" inline-template>
         <div v-cloak>
             <div class="form-group row my-5">
                 <div class="col-lg-12">
                     <input type="text" name="name" v-model="name" value="{{ $data['topic']->name }}"
                            class="form-control-lg form-control border-0 px-0"
-                           title="Name" required placeholder="Give your topic a name">
+                           title="Name" required placeholder="{{ __('canvas::topics.forms.placeholder') }}">
                     @if ($errors->has('slug'))
                         <div class="invalid-feedback d-block">
                             <strong>{{ $errors->first('slug') }}</strong>
@@ -23,5 +23,5 @@
                 </div>
             </div>
         </div>
-    </slug>
+    </slug-component>
 </form>

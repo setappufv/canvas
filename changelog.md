@@ -1,5 +1,78 @@
 # Release Notes
 
+## [v4.1.35](https://github.com/cnvs/canvas/compare/v4.1.34...v4.1.35)
+
+### Changed
+- Refactored list components and updated prop definitions ([092a0cb](https://github.com/cnvs/canvas/commit/092a0cb085111ef307b3f74302182f4e684a374c), [11f43c0](https://github.com/cnvs/canvas/commit/11f43c0cb07c3162077bcb28a7bf81ee35bf0ae1))
+
+## [v4.1.34](https://github.com/cnvs/canvas/compare/v4.1.33...v4.1.34)
+
+### Changed
+- Refactored Vue components to better align with the official style guide ([6c27729](https://github.com/cnvs/canvas/commit/6c2772926320e25a7f550d7da427772526465df2), [4fbc257](https://github.com/cnvs/canvas/commit/4fbc257c249538d6c7b52ddbf04af08b6d2735b1))
+
+## [v4.1.33](https://github.com/cnvs/canvas/compare/v4.1.32...v4.1.33)
+
+### Changed
+- Refactored the blade templates [2d37762](https://github.com/cnvs/canvas/commit/2d377623bbf103d593b326008e898e8f969a31a4)
+- Updated the default template dependencies [8136282](https://github.com/cnvs/canvas/commit/8136282391830d73c38afc12c487e37f10a2a7ca)
+
+## [v4.1.32](https://github.com/cnvs/canvas/compare/v4.1.31...v4.1.32)
+
+### Changed
+- Updated the French translations ([#466](https://github.com/cnvs/canvas/commit/7ff9a356d5cccac6dee735a4915e81b89482c71f), [#467](https://github.com/cnvs/canvas/commit/f7c1ed69d1058d1d608757b2e0eb936e8e941cb5), [#468](https://github.com/cnvs/canvas/commit/ff5d2b7b5c45f5b86dd816694bba0fe74e8337d4), [#469](https://github.com/cnvs/canvas/commit/9e46ab3f1683ff587a77be19a2f5c3b871aff57e), [#470](https://github.com/cnvs/canvas/commit/c25df9f1336cf3bfe687815877351315ffc0c5ed))
+
+### Added
+- Added the ability to remove a featured image ([10b0019](https://github.com/cnvs/canvas/commit/10b0019f61b7a5d3ff22843fd0ef250ffab689c0))
+
+### Fixed
+- Fixed the missing featured image caption translation ([c5f26b4](https://github.com/cnvs/canvas/commit/c5f26b4721a1de27d60d9f4e6bb39230fd3f767f))
+
+## [v4.1.31](https://github.com/cnvs/canvas/compare/v4.1.30...v4.1.31)
+
+### Changed
+- Refactored the MediaController into a single action for simplicity ([2201769](https://github.com/cnvs/canvas/commit/22017691233fabfcea16cb473ca64e1573dd751c))
+- Refactored the `i18n` objects into single translation endpoints throughout the components for better maintainability ([0af8873](https://github.com/cnvs/canvas/commit/0af8873a90e26cf97ca9aec11c67f8851a11b36e))
+
+## [v4.1.30](https://github.com/cnvs/canvas/compare/v4.1.29...v4.1.30)
+
+### Fixed
+- Fixed the query scope for published posts ([be072bd](https://github.com/cnvs/canvas/commit/be072bd583e738ed7422cb31a171b73e4f8d5e2f))
+
+## [v4.1.29](https://github.com/cnvs/canvas/compare/v4.1.28...v4.1.29)
+
+### Added
+- Added multilingual support for French, Portuguese and Chinese (Simplified) ([#447](https://github.com/cnvs/canvas/issues/447), [f622b1e](https://github.com/cnvs/canvas/commit/f622b1e4864ecd1a526c79a467dda7b1aa1485ad))
+
+## [v4.1.28](https://github.com/cnvs/canvas/compare/v4.1.27...v4.1.28)
+
+### Changed
+- Added a `v-cloak` directive to the main editor component ([5d81ea4](https://github.com/cnvs/canvas/commit/5d81ea49d3d67b193274ff9b038344bb884d69f9))
+
+## [v4.1.27](https://github.com/cnvs/canvas/compare/v4.1.26...v4.1.27)
+
+### Changed
+- Refactored resource handling from the `register()` to the `boot()` method in the service provider ([#462](https://github.com/cnvs/canvas/pull/462)) 
+
+## [v4.1.26](https://github.com/cnvs/canvas/compare/v4.1.25...v4.1.26)
+
+### Added
+- Added a PostTags model ([0942a5b](https://github.com/cnvs/canvas/commit/0942a5b0b03b96e9ab1981fed18038fe8e7a9686))
+
+### Fixed
+- Skipped the `canvas:install` test ([#456](https://github.com/cnvs/canvas/issues/456), [53f21e6](https://github.com/cnvs/canvas/commit/53f21e67a8e1f004249b1bf21b2786b06ebeec99))
+
+## [v4.1.25](https://github.com/cnvs/canvas/compare/v4.1.24...v4.1.25)
+
+### Added
+- Added a unit test for precision number formatting ([8398356](https://github.com/cnvs/canvas/commit/8398356b819ce27d98895658277e0a6897613464))
+
+## [v4.1.24](https://github.com/cnvs/canvas/compare/v4.1.23...v4.1.24)
+
+### Changed
+- Changed the `laravel/framework` requirement to `illuminate/support` ([#453](https://github.com/cnvs/canvas/pull/453), [a1306c5](https://github.com/cnvs/canvas/commit/a1306c5c925f6357f6c150c4249e44505ce15c57), [b056182](https://github.com/cnvs/canvas/commit/b056182da87cc92403672cbf81f062a5ea72c171))
+- Updated Unsplash links to open in new tabs ([2fe5658](https://github.com/cnvs/canvas/commit/2fe5658c363afea9b03ad270353f9659bab19494))
+- Refactored the `storage_path` configuration to less explicit with images ([b0ab792](https://github.com/cnvs/canvas/commit/b0ab7926446d018461ca9a644a2ac571ad6eb046))
+
 ## [v4.1.23](https://github.com/cnvs/canvas/compare/v4.1.22...v4.1.23)
 
 ### Fixed

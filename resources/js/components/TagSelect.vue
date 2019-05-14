@@ -1,8 +1,40 @@
-<script type="text/ecmascript-6">
+<template>
+    <div v-cloak>
+        <multiselect
+                v-model="value"
+                :placeholder="this.trans.tags.forms.select"
+                :tag-placeholder="this.trans.tags.forms.tag"
+                label="name"
+                track-by="slug"
+                :options="options"
+                :multiple="true"
+                :taggable="true"
+                @tag="addTag">
+        </multiselect>
+
+        <div class="tags">
+            <template v-for="(tags, index) in value">
+                <input hidden type="hidden" :name="`tags[${index}][name]`" :value="tags.name">
+                <input hidden type="hidden" :name="`tags[${index}][slug]`" :value="tags.slug">
+            </template>
+        </div>
+    </div>
+</template>
+
+<script>
     import Multiselect from 'vue-multiselect'
 
     export default {
-        props: ['tags', 'tagged'],
+        props: {
+            tags: {
+                type: Array,
+                required: false
+            },
+            tagged: {
+                type: Array,
+                required: false
+            }
+        },
 
         components: {
             Multiselect
@@ -19,7 +51,8 @@
 
             return {
                 value: this.tagged ? this.tagged : [],
-                options: allTags
+                options: allTags,
+                trans: i18n
             }
         },
 
@@ -50,31 +83,9 @@
     }
 </script>
 
-<template>
-    <div>
-        <multiselect
-                v-model="value"
-                placeholder="Select some tags..."
-                tag-placeholder="Add a new tag"
-                label="name"
-                track-by="slug"
-                :options="options"
-                :multiple="true"
-                :taggable="true"
-                @tag="addTag">
-        </multiselect>
+<style>
+    @import "~vue-multiselect/dist/vue-multiselect.min.css";
 
-        <div class="tags">
-            <template v-for="(tags, index) in value">
-                <input hidden type="hidden" :name="`tags[${index}][name]`" :value="tags.name">
-                <input hidden type="hidden" :name="`tags[${index}][slug]`" :value="tags.slug">
-            </template>
-        </div>
-    </div>
-</template>
-
-<style rel="stylesheet" type="text/css" src="vue-multiselect/dist/vue-multiselect.min.css"></style>
-<style type="text/css">
     .multiselect__select {
         display: none;
     }

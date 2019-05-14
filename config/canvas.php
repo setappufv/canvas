@@ -7,9 +7,9 @@ return [
     | Route Middleware
     |--------------------------------------------------------------------------
     |
-    | These middleware will be attached to each route in Canvas, giving you
+    | These middleware will be attached to every route in Canvas, giving you
     | the chance to add your own middleware to this list or change any of
-    | the existing middleware. Or, you can simply stick with this list.
+    | the existing middleware. Or, you can simply stick with the list.
     |
     */
 
@@ -31,7 +31,7 @@ return [
 
     'storage_disk' => env('CANVAS_STORAGE_DISK', 'local'),
 
-    'storage_path' => env('CANVAS_STORAGE_PATH', 'public/canvas/images'),
+    'storage_path' => env('CANVAS_STORAGE_PATH', 'public/canvas'),
 
     /*
     |--------------------------------------------------------------------------

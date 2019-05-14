@@ -1,18 +1,12 @@
 @extends('blog.layouts.app')
 
-@section('title', sprintf('%s — %s', config('app.name'), 'Blog'))
+@section('title', sprintf('%s — %s', config('app.name'), __('canvas::blog.title')))
 
 @push('styles')
     @include('blog.partials.styles')
 @endpush
 
-@section('actions')
-    <a href="{{ route('canvas.post.create') }}" class="btn btn-sm btn-outline-primary">
-        New post
-    </a>
-@endsection
-
-@section('body')
+@section('content')
     <div class="container">
         @include('blog.partials.navbar')
 
@@ -50,7 +44,7 @@
         <div class="row">
             <div class="col-md-8 blog-main">
                 <h3 class="pb-4 mb-4 font-italic border-bottom">
-                    Recent posts
+                    {{ __('canvas::blog.posts.label') }}
                 </h3>
                 @if(count($data['posts']) > 0)
                     @foreach($data['posts'] as $post)
@@ -65,13 +59,14 @@
 
                     {{ $data['posts']->links() }}
                 @else
-                    <p class="mt-4">No posts were found, start by <a href="{{ route('canvas.post.create') }}">adding a new post</a>.</p>
+                    <p class="mt-4">{{ __('canvas::blog.empty.description') }} <a href="{{ route('canvas.post.create') }}">
+                            {{ __('canvas::blog.empty.action') }}</a>.</p>
                 @endif
             </div>
 
-            <aside class="col-md-4 blog-sidebar">
+            <aside class="col-md-4">
                 <div class="p-4">
-                    <h4 class="font-italic">Tags</h4>
+                    <h4 class="font-italic">{{ __('canvas::blog.tags.label') }}</h4>
                     <ol class="list-unstyled mb-0">
                         @foreach($data['tags'] as $tag)
                             <li><a href="{{ route('blog.tag', $tag->slug) }}">{{ $tag->name }}</a></li>

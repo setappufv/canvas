@@ -32,14 +32,14 @@
                             >
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="{{ route('canvas.post.index') }}">Posts</a>
-                            <a class="dropdown-item" href="{{ route('canvas.tag.index') }}">Tags</a>
-                            <a class="dropdown-item" href="{{ route('canvas.topic.index') }}">Topics</a>
-                            <a class="dropdown-item" href="{{ route('canvas.index') }}">Stats</a>
+                            <a class="dropdown-item" href="{{ route('canvas.post.index') }}">{{ __('canvas::nav.user.posts') }}</a>
+                            <a class="dropdown-item" href="{{ route('canvas.tag.index') }}">{{ __('canvas::nav.user.tags') }}</a>
+                            <a class="dropdown-item" href="{{ route('canvas.topic.index') }}">{{ __('canvas::nav.user.topics') }}</a>
+                            <a class="dropdown-item" href="{{ route('canvas.index') }}">{{ __('canvas::nav.user.stats') }}</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                                {{ __('Sign out') }}
+                                {{ __('canvas::nav.user.logout') }}
                             </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf

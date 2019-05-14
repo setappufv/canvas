@@ -1,6 +1,11 @@
-<script type="text/ecmascript-6">
+<script>
     export default {
-        props: ['model'],
+        props: {
+            model: {
+                type: Object,
+                required: false
+            }
+        },
 
         data() {
             return {
