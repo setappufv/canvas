@@ -47,12 +47,12 @@
                                 <div class="d-flex border-top py-3 align-items-center" v-for="post in filteredList">
                                     <div class="mr-auto">
                                         <p class="mb-1 mt-2">
-                                            <a :href="'/canvas/stats/' + post.id" class="font-weight-bold lead">@{{ post.title }}</a>
+                                            <a :href="'/' + '{{ config('canvas.path') }}' + '/stats/' + post.id" class="font-weight-bold lead">@{{ post.title }}</a>
                                         </p>
                                         <p class="text-muted mb-2">
                                             @{{ post.read_time }} ―
-                                            <a :href="'/canvas/posts/' + post.id + '/edit'">{{ __('canvas::buttons.posts.edit') }}</a> ―
-                                            <a :href="'/canvas/stats/' + post.id">{{ __('canvas::buttons.stats.show') }}</a>
+                                            <a :href="'/' + '{{ config('canvas.path') }}' + '/posts/' + post.id + '/edit'">{{ __('canvas::buttons.posts.edit') }}</a> ―
+                                            <a :href="'/' + '{{ config('canvas.path') }}' + '/stats/' + post.id">{{ __('canvas::buttons.stats.show') }}</a>
                                         </p>
                                     </div>
                                     <div class="ml-auto d-none d-lg-block">

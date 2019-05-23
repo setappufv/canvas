@@ -39,7 +39,7 @@
                             <div class="d-flex border-top py-3 align-items-center" v-for="tag in filteredList">
                                 <div class="mr-auto">
                                     <p class="mb-0 py-1">
-                                        <a :href="'/canvas/tags/' + tag.id + '/edit'"
+                                        <a :href="'/' + '{{ config('canvas.path') }}' + '/tags/' + tag.id + '/edit'"
                                            class="font-weight-bold lead">@{{ tag.name }}</a>
                                     </p>
                                 </div>

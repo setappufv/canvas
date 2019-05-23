@@ -4,7 +4,9 @@
             <div class="modal-dialog" id="unsplash-modal" role="document">
                 <div class="modal-content">
                     <div class="modal-body">
-                        <p class="font-weight-bold lead">{{ this.trans.posts.forms.editor.images.picker.uploader.label }}</p>
+                        <p class="font-weight-bold lead">
+                            {{ this.trans.posts.forms.editor.images.picker.uploader.label }}
+                        </p>
                         <div class="form-group row">
                             <div class="col-lg-12">
                                 <div v-if="imageUrl" id="current-image">
@@ -20,8 +22,12 @@
 
                                     <div class="input-group py-2">
                                         <select class="custom-select border-0 px-0" v-model="layout">
-                                            <option value="default">{{ this.trans.posts.forms.editor.images.picker.uploader.layout.default }}</option>
-                                            <option value="wide">{{ this.trans.posts.forms.editor.images.picker.uploader.layout.wide }}</option>
+                                            <option value="default">
+                                                {{ this.trans.posts.forms.editor.images.picker.uploader.layout.default }}
+                                            </option>
+                                            <option value="wide">
+                                                {{ this.trans.posts.forms.editor.images.picker.uploader.layout.wide }}
+                                            </option>
                                         </select>
                                     </div>
                                 </div>
@@ -29,13 +35,16 @@
                                 <image-picker
                                         v-if="!imageUrl"
                                         @changed="updateImage"
-                                        :unsplash="this.unsplash">
+                                        :unsplash="this.unsplash"
+                                        :path="this.path">
                                 </image-picker>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-link text-muted" data-dismiss="modal" @click="applyImage">{{ this.trans.buttons.general.done }}</button>
+                        <button class="btn btn-link text-muted" data-dismiss="modal" @click="applyImage">
+                            {{ this.trans.buttons.general.done }}
+                        </button>
                     </div>
                 </div>
             </div>
@@ -56,6 +65,10 @@
             unsplash: {
                 type: String,
                 required: false
+            },
+            path: {
+                type: String,
+                required: true
             }
         },
 

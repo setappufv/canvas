@@ -3,6 +3,19 @@
 return [
 
     /*
+   |--------------------------------------------------------------------------
+   | Canvas Path
+   |--------------------------------------------------------------------------
+   |
+   | This is the URI path where Canvas will be accessible from. You are free
+   | to change this path to anything you like. Note that updating the URI
+   | will affect the internal API paths that are not exposed to users.
+   |
+   */
+
+    'path' => env('CANVAS_PATH_NAME', 'canvas'),
+
+    /*
     |--------------------------------------------------------------------------
     | Route Middleware
     |--------------------------------------------------------------------------
@@ -45,6 +58,21 @@ return [
 
     'unsplash' => [
         'access_key' => env('CANVAS_UNSPLASH_ACCESS_KEY'),
+    ],
+
+    /*
+   |--------------------------------------------------------------------------
+   | Weekly Digest
+   |--------------------------------------------------------------------------
+   |
+   | This option enables Canvas to send notifications via e-mail. A weekly
+   | summary digest will be delivered via the default mail driver. This
+   | will provide helpful insights into your content and its impact.
+   |
+   */
+
+    'mail' => [
+        'enabled' => env('CANVAS_MAIL_ENABLED', false),
     ],
 
 ];

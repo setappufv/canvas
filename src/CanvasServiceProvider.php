@@ -3,6 +3,7 @@
 namespace Canvas;
 
 use Canvas\Console\SetupCommand;
+use Canvas\Console\DigestCommand;
 use Illuminate\Events\Dispatcher;
 use Canvas\Console\InstallCommand;
 use Canvas\Console\PublishCommand;
@@ -80,7 +81,7 @@ class CanvasServiceProvider extends ServiceProvider
     {
         return [
             'namespace'  => 'Canvas\Http\Controllers',
-            'prefix'     => 'canvas',
+            'prefix'     => config('canvas.path'),
             'middleware' => config('canvas.middleware'),
         ];
     }
@@ -158,6 +159,7 @@ class CanvasServiceProvider extends ServiceProvider
     private function handleCommands(): void
     {
         $this->commands([
+            DigestCommand::class,
             InstallCommand::class,
             PublishCommand::class,
             SetupCommand::class,

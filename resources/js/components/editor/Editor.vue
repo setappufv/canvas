@@ -8,7 +8,8 @@
                 </button>
 
                 <div class="controls pl-3 bg-white d-none">
-                    <button class="btn btn-outline-light btn-circle border mr-1" type="button" @click="openImageUploader()"
+                    <button class="btn btn-outline-light btn-circle border mr-1" type="button"
+                            @click="openImageUploader()"
                             data-toggle="modal" data-target="#image-upload">
                         <i class="far fa-fw fa-image text-muted"></i>
                     </button>
@@ -25,11 +26,12 @@
             </div>
 
             <div ref="editor"></div>
-            <input type="hidden" name="body" ref="body" />
+            <input type="hidden" name="body" ref="body"/>
 
             <image-uploader
                     @updated="applyImage"
-                    :unsplash="this.unsplash">
+                    :unsplash="this.unsplash"
+                    :path="this.path">
             </image-uploader>
             <html-embedder
                     @adding="addHTML">
@@ -62,6 +64,10 @@
             unsplash: {
                 type: String,
                 default: ''
+            },
+            path: {
+                type: String,
+                required: true
             },
             value: {
                 type: String,
@@ -250,7 +256,7 @@
     .ql-editor {
         font-family: "Merriweather", serif;
         font-weight: 300;
-        color: hsla(0,0%,0%,0.9);
+        color: hsla(0, 0%, 0%, 0.9);
         font-size: 1.1rem;
         line-height: 1.9;
         padding: 0;

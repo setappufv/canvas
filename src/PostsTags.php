@@ -4,14 +4,14 @@ namespace Canvas;
 
 use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class PostsTopics extends Pivot
+class PostsTags extends Pivot
 {
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'canvas_posts_topics';
+    protected $table = 'canvas_posts_tags';
 
     /**
      * The attributes that aren't mass assignable.

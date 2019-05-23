@@ -1,5 +1,29 @@
 # Release Notes
 
+## [v4.1.39](https://github.com/cnvs/canvas/compare/v4.1.38...v4.1.39)
+
+### Fixed
+- Fixed Moment.js not respecting the app timezone ([#474](https://github.com/cnvs/canvas/issues/474), [#482](https://github.com/cnvs/canvas/pull/482), [a9c64d9](https://github.com/cnvs/canvas/commit/a9c64d965e4acad7f0e65432118cef9cd82f44a8))
+
+## [v4.1.38](https://github.com/cnvs/canvas/compare/v4.1.37...v4.1.38)
+
+### Changed
+- Refactored `PostTags` to `PostsTags` ([f091d32](https://github.com/cnvs/canvas/commit/f091d322430c27b2b29c8356bc68cde532b1eff1))
+
+### Added
+- Added support for a weekly digest e-mail ([7d385bd](https://github.com/cnvs/canvas/commit/7d385bd9da3a4a37ded04373c67203f35f531f19))
+- Added multilingual support for Russian ([418ad29](https://github.com/cnvs/canvas/commit/418ad290637cef92a8d561c0471af28f468c8e7b))
+
+## [v4.1.37](https://github.com/cnvs/canvas/compare/v4.1.36...v4.1.37)
+
+### Changed
+- Minor updates to the sponsorship page ([91a6ff5](https://github.com/cnvs/canvas/commit/91a6ff598821fe76627398be6b725c2ad3cb522c))
+
+## [v4.1.36](https://github.com/cnvs/canvas/compare/v4.1.35...v4.1.36)
+
+### Added
+- Added sponsor information ([6476549](https://github.com/cnvs/canvas/commit/64765492e228ac859399054f7aee05e5fcf07b33))
+
 ## [v4.1.35](https://github.com/cnvs/canvas/compare/v4.1.34...v4.1.35)
 
 ### Changed

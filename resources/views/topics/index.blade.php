@@ -39,7 +39,7 @@
                             <div class="d-flex border-top py-3 align-items-center" v-for="topic in filteredList">
                                 <div class="mr-auto">
                                     <p class="mb-0 py-1">
-                                        <a :href="'/canvas/topics/' + topic.id + '/edit'"
+                                        <a :href="'/' + '{{ config('canvas.path') }}' + '/topics/' + topic.id + '/edit'"
                                            class="font-weight-bold lead">@{{ topic.name }}</a>
                                     </p>
                                 </div>

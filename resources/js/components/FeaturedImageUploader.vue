@@ -8,7 +8,7 @@
                        name="featured_image_caption"
                        title="Featured Image Caption"
                        v-model="imageCaption"
-                       :placeholder="this.trans.posts.forms.editor.images.picker.uploader.caption.placeholder" >
+                       :placeholder="this.trans.posts.forms.editor.images.picker.uploader.caption.placeholder">
             </div>
         </div>
 
@@ -17,7 +17,8 @@
         <image-picker
                 @changed="updateImage"
                 @uploading="uploading = true"
-                :unsplash="this.unsplash">
+                :unsplash="this.unsplash"
+                :path="this.path">
         </image-picker>
     </div>
 </template>
@@ -45,6 +46,10 @@
             unsplash: {
                 type: String,
                 required: false
+            },
+            path: {
+                type: String,
+                required: true
             },
         },
 

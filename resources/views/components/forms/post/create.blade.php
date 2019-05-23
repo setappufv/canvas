@@ -10,7 +10,9 @@
         </div>
     </div>
 
-    <editor :unsplash="'{{ config('canvas.unsplash.access_key') }}'"></editor>
+    <editor :unsplash="'{{ config('canvas.unsplash.access_key') }}'"
+            :path="'{{ config('canvas.path') }}'">
+    </editor>
 
     @include('canvas::components.modals.post.create.settings')
     @include('canvas::components.modals.post.create.publish')

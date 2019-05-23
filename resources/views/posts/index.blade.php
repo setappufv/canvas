@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-    <post-list :models="{{ $data['posts'] }}" inline-template>
+    <post-list :models="{{ $data['posts'] }}" :default-timezone="{{ json_encode(config('app.timezone')) }}" inline-template>
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-10">
@@ -39,11 +39,11 @@
                             <div class="d-flex border-top py-3 align-items-center" v-for="post in filteredList">
                                 <div class="mr-auto py-1">
                                     <p class="mb-1">
-                                        <a :href="'/canvas/posts/' + post.id + '/edit'" class="font-weight-bold lead">@{{ post.title }}</a>
+                                        <a :href="'/' + '{{ config('canvas.path') }}' + '/posts/' + post.id + '/edit'" class="font-weight-bold lead">@{{ post.title }}</a>
                                     </p>
                                     <p class="mb-1" v-if="post.summary">@{{ post.summary }}</p>
                                     <p class="text-muted mb-0">
-                                        <span v-if="post.published_at <= new Date().toJSON().slice(0, 19).replace('T', ' ')">
+                                        <span v-if="post.published_at <= moment(new Date()).tz(timezone).format().slice(0, 19).replace('T', ' ')">
                                             {{ __('canvas::posts.details.published') }} @{{ moment(post.published_at).fromNow() }}
                                         </span>
                                         <span v-else class="text-danger">
@@ -53,7 +53,7 @@
                                     </p>
                                 </div>
                                 <div class="ml-auto d-none d-lg-block">
-                                    <a :href="'/canvas/posts/' + post.id + '/edit'">
+                                    <a :href="'/' + '{{ config('canvas.path') }}' + '/posts/' + post.id + '/edit'">
                                         <div v-if="post.featured_image"
                                              class="mr-2"
                                              :style="{ backgroundImage: 'url(' + post.featured_image + ')' }"

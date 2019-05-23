@@ -8,7 +8,8 @@
                         :post="'{{ $data['post']->id }}'"
                         :url="'{{ $data['post']->featured_image }}'"
                         :caption="'{{ $data['post']->featured_image_caption }}'"
-                        :unsplash="'{{ config('canvas.unsplash.access_key') }}'">
+                        :unsplash="'{{ config('canvas.unsplash.access_key') }}'"
+                        :path="'{{ config('canvas.path') }}'">
                 </featured-image-uploader>
             </div>
             <div class="modal-footer">

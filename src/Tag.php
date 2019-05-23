@@ -11,18 +11,18 @@ class Tag extends Model
     use SoftDeletes;
 
     /**
-     * The attributes that aren't mass assignable.
-     *
-     * @var array
-     */
-    protected $guarded = [];
-
-    /**
      * The table associated with the model.
      *
      * @var string
      */
     protected $table = 'canvas_tags';
+
+    /**
+     * The attributes that aren't mass assignable.
+     *
+     * @var array
+     */
+    protected $guarded = [];
 
     /**
      * The primary key for the model.

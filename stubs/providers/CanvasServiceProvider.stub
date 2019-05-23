@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Canvas\Canvas;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Console\Scheduling\Schedule;
 
 class CanvasServiceProvider extends ServiceProvider
 {
@@ -24,6 +25,15 @@ class CanvasServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->app->booted(function () {
+            $schedule = resolve(Schedule::class);
+            $schedule->command('canvas:digest')
+                ->weekly()
+                ->sundays()
+                ->at('13:00')
+                ->when(function () {
+                    return config('canvas.mail.enabled');
+                });
+        });
     }
 }

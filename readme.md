@@ -53,8 +53,21 @@ Se você quiser incluir imagens do [Unsplash] (https://unsplash.com) em suas pos
 ],
 ```
 
-## Atualizações
+**Quer um resumo semanal?** O Canvas fornece suporte para um e-mail semanal que fornece estatísticas rápidas do conteúdo que você criou, entregues diretamente na sua caixa de entrada. Depois que seu aplicativo estiver [configurado para enviar e-mails](https://laravel.com/docs/5.8/mail), atualize `config/canvas.php`:
 
+```php
+'mail' => [
+    'enabled' => env('CANVAS_MAIL_ENABLED', false),
+],
+```
+
+Como o resumo semanal é executado no [Laravel's Scheduler](https://laravel.com/docs/5.8/scheduling#introduction), você precisará adicionar a seguinte entrada cron ao seu servidor:
+
+```bash
+* * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1
+```
+
+## Atualizações
 Você pode atualizar sua instalação do Canvas usando o composer:
 
 ```bash
