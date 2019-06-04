@@ -20,7 +20,7 @@ return [
             'tags'   => 'Tag',
             'topics' => 'Tópicos',
             'stats'  => 'Estatísticas',
-            'login'  => 'assinar em',
+            'login'  => 'Logar',
             'logout' => 'Sair',
         ],
     ],

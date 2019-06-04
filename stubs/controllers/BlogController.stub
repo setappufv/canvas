@@ -11,6 +11,19 @@ use Canvas\Events\PostViewed;
 class BlogController extends Controller
 {
     /**
+     * Show the posts per page in JSON format
+     */
+    public function ApiPost(){
+        return Post::select('id', 'title', 'summary', 'featured_image', 'published_at')->orderBy('published_at', 'desc')->paginate(3);
+    }
+
+    /**
+     * Show a single post in JSON format
+     */
+    public function ApiPostId(Post $id){
+        return Post::find($id);
+    }
+    /**
      * Show the blog homepage with a paginated list of results.
      *
      * @return View
