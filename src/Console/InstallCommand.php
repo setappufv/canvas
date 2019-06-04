@@ -31,22 +31,14 @@ class InstallCommand extends Command
      */
     public function handle()
     {
-        $this->comment('Publishing the service provider...');
         $this->callSilent('vendor:publish', ['--tag' => 'canvas-provider']);
-
-        $this->comment('Publishing the assets...');
         $this->callSilent('vendor:publish', ['--tag' => 'canvas-assets']);
-
-        $this->comment('Publishing the configuration file...');
         $this->callSilent('vendor:publish', ['--tag' => 'canvas-config']);
-
-        $this->comment('Running the database migrations...');
         $this->callSilent('migrate');
 
         $this->registerCanvasServiceProvider();
 
-        $this->line('');
-        $this->line('<info>[✔]</info> Canvas is installed and ready to use. Enjoy!');
+        $this->info('Installation complete.');
     }
 
     /**

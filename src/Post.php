@@ -64,7 +64,7 @@ class Post extends Model
      *
      * @var array
      */
-    public $dates = [
+    protected $dates = [
         'published_at',
     ];
 
@@ -287,5 +287,16 @@ class Post extends Model
     public function scopePublished($query): Builder
     {
         return $query->where('published_at', '<=', now()->toDateTimeString());
+    }
+
+    /**
+     * Scope a query to only include drafted posts.
+     *
+     * @param Builder $query
+     * @return Builder
+     */
+    public function scopeDraft($query): Builder
+    {
+        return $query->where('published_at', '>', now()->toDateTimeString());
     }
 }

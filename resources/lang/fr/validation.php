@@ -2,6 +2,7 @@
 
 return [
 
-    'unique' => 'le :attribute a déjà été pris.',
+    'required' => 'le :attribute champ requis.',
+    'unique'   => 'le :attribute a déjà été pris.',
 
 ];

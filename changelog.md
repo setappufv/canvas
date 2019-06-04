@@ -1,5 +1,44 @@
 # Release Notes
 
+## [Unreleased](https://github.com/cnvs/canvas/compare/master...develop)
+
+## [4.2.2](https://github.com/cnvs/canvas/compare/v4.2.1...v4.2.2)
+
+## Changed
+- Updated the German translations ([89e5f76](https://github.com/cnvs/canvas/commit/89e5f76f8f53c4337fd468e5b8e2b78830a25281), [c77fa7a](https://github.com/cnvs/canvas/commit/c77fa7ad9c84a85fc777fe985d99ccef99528de2))
+- Updated the Spanish translations ([#495](https://github.com/cnvs/canvas/pull/495), [f7ab6c2](https://github.com/cnvs/canvas/commit/f7ab6c2bb2f911131442eba80d100f9822e2ccef), [54ecb39](https://github.com/cnvs/canvas/commit/54ecb39b99e77efb71e11be01f3401de70a8639a))
+- Minor updates from PHP Insights ([7a297c2](https://github.com/cnvs/canvas/commit/7a297c284f5fc68f9cda9b8a208d3b184db9d010))
+- Refactored the command output lines ([7466c19](https://github.com/cnvs/canvas/commit/7466c19ed2bd7b65852e007140fc2d0ecd5b4bf0))
+- Reverted the font display options ([b9326c1](https://github.com/cnvs/canvas/commit/b9326c1f36882e06c24673b13bcb485062126726))
+
+## Fixed
+- Bumped Axios version to patch a security vulnerability ([4a2140f](https://github.com/cnvs/canvas/commit/4a2140f723e987c9408d091650a54f5225319357))
+
+## [4.2.1](https://github.com/cnvs/canvas/compare/v4.2.0...v4.2.1)
+
+## Changed
+- Refactored the command output lines ([94ddef1](https://github.com/cnvs/canvas/commit/94ddef17704843b9efdff50f27669dcbe116b3b5))
+- Improved font load times with the display swap property ([43c448a](https://github.com/cnvs/canvas/commit/43c448ab7155dcda2f5643cfb66d0350eab0dccb))
+
+## Fixed
+- Fixed the missing featured image property on the posts index ([15c559b](https://github.com/cnvs/canvas/commit/15c559b25e440460ba97e2de7708d72a8ff2fd4d))
+- Fixed incorrect line widths being applied to the line chart components ([046211e](https://github.com/cnvs/canvas/commit/046211e3e1fa2f3a9099259c5e74f10dc9980d8a))
+
+## [4.2.0](https://github.com/cnvs/canvas/compare/v4.1.39...v4.2.0)
+
+## Changed
+- Query optimization ([2afc167](https://github.com/cnvs/canvas/commit/2afc1676cb053e2f13a450308a69f4ad367162c5))
+
+## Added
+- Added multilingual support for Spanish, German and Arabic ([231494f](https://github.com/cnvs/canvas/commit/231494fe3310137c69b9b7217d8ee15fd613dbb9), [3aa2296](https://github.com/cnvs/canvas/commit/3aa229643baec844608f7c4c23db77efb28c9ef3), [02f704c](https://github.com/cnvs/canvas/commit/02f704c5a4d9e3df80ba8e83964f189c60748353))
+
+## Fixed
+- Fixed an inconsistency with post objects prior to passing to the `PostList` component ([5aa89ff](https://github.com/cnvs/canvas/commit/5aa89ff007b4a7d45e40ffcaad534de813b50f58))
+- Fixed an incorrect total posts count on the stats index ([616d4b8](https://github.com/cnvs/canvas/commit/616d4b8257be3c3c8f123fd1ae07644c35f864bd))
+- Fixed the incorrect translation line being pulled on the stats index ([ba66fa8](https://github.com/cnvs/canvas/commit/ba66fa88106f5a6cc791ae0f59a46e1a039e2d69))
+- Fixed missing validation lines from the language files ([b33389e](https://github.com/cnvs/canvas/commit/b33389ed0df09a51875913b34d26edd8b1097f73))
+- Fixed the styling on the default template navbar ([e8a67f8](https://github.com/cnvs/canvas/commit/e8a67f8a8374c9e29776a3f0995b679ca0a14b89))
+
 ## [v4.1.39](https://github.com/cnvs/canvas/compare/v4.1.38...v4.1.39)
 
 ### Fixed
@@ -54,7 +93,7 @@
 ## [v4.1.31](https://github.com/cnvs/canvas/compare/v4.1.30...v4.1.31)
 
 ### Changed
-- Refactored the MediaController into a single action for simplicity ([2201769](https://github.com/cnvs/canvas/commit/22017691233fabfcea16cb473ca64e1573dd751c))
+- Refactored the `MediaController` into a single action for simplicity ([2201769](https://github.com/cnvs/canvas/commit/22017691233fabfcea16cb473ca64e1573dd751c))
 - Refactored the `i18n` objects into single translation endpoints throughout the components for better maintainability ([0af8873](https://github.com/cnvs/canvas/commit/0af8873a90e26cf97ca9aec11c67f8851a11b36e))
 
 ## [v4.1.30](https://github.com/cnvs/canvas/compare/v4.1.29...v4.1.30)
@@ -80,7 +119,7 @@
 ## [v4.1.26](https://github.com/cnvs/canvas/compare/v4.1.25...v4.1.26)
 
 ### Added
-- Added a PostTags model ([0942a5b](https://github.com/cnvs/canvas/commit/0942a5b0b03b96e9ab1981fed18038fe8e7a9686))
+- Added a `PostTags` model ([0942a5b](https://github.com/cnvs/canvas/commit/0942a5b0b03b96e9ab1981fed18038fe8e7a9686))
 
 ### Fixed
 - Skipped the `canvas:install` test ([#456](https://github.com/cnvs/canvas/issues/456), [53f21e6](https://github.com/cnvs/canvas/commit/53f21e67a8e1f004249b1bf21b2786b06ebeec99))
@@ -126,10 +165,10 @@
 - Removed unnecessary eager loading from the post index route ([09d01c6](https://github.com/cnvs/canvas/commit/09d01c622f04997dc23ae64ac9719a067a28b734))
 
 ### Added
-- Added unit tests for the ViewThrottle middleware ([087832e](https://github.com/cnvs/canvas/commit/087832eb6b7439dbe0f9214fea99020e9eaeed39))
+- Added unit tests for the `ViewThrottle` middleware ([087832e](https://github.com/cnvs/canvas/commit/087832eb6b7439dbe0f9214fea99020e9eaeed39))
 
 ### Fixed
-- Refactored the ViewThrottle middleware to prune posts from the session instead of simply filtering ([087832e](https://github.com/cnvs/canvas/commit/087832eb6b7439dbe0f9214fea99020e9eaeed39))
+- Refactored the `ViewThrottle` middleware to prune posts from the session instead of simply filtering ([087832e](https://github.com/cnvs/canvas/commit/087832eb6b7439dbe0f9214fea99020e9eaeed39))
 
 ## [v4.1.18](https://github.com/cnvs/canvas/compare/v4.1.17...v4.1.18)
 
@@ -151,8 +190,8 @@
 - Updated the dark mode contrast ratios for increased readability ([a718b1b](https://github.com/cnvs/canvas/commit/a718b1bfa13223a9e73d233d336340978ea84f68))
 
 ### Added
-- Added unit tests for the StoreViewData listener ([2e3aeb5](https://github.com/cnvs/canvas/commit/2e3aeb518aee9141fdec6485ca2c3844a7f98d24))
-- Added unit tests for the Publish command ([637dd3f](https://github.com/cnvs/canvas/commit/637dd3fb2b1a1efd6a2c67fbeb77038737e8d725))
+- Added unit tests for the `StoreViewData` listener ([2e3aeb5](https://github.com/cnvs/canvas/commit/2e3aeb518aee9141fdec6485ca2c3844a7f98d24))
+- Added unit tests for the `canvas:publish` Artisan command ([637dd3f](https://github.com/cnvs/canvas/commit/637dd3fb2b1a1efd6a2c67fbeb77038737e8d725))
 
 ### Fixed
 - Fixed the missing validation messages on Topics/Tags ([4d4231b](https://github.com/cnvs/canvas/commit/4d4231bd7da898e7ee28c38864944ede281cbb8d))

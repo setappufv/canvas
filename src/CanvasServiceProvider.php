@@ -23,14 +23,12 @@ class CanvasServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->handleConfig();
         $this->handleEvents();
         $this->handleRoutes();
         $this->handleMigrations();
         $this->handlePublishing();
         $this->handleResources();
         $this->handleTranslations();
-        $this->handleCommands();
     }
 
     /**
@@ -40,7 +38,8 @@ class CanvasServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->handleConfig();
+        $this->handleCommands();
     }
 
     /**

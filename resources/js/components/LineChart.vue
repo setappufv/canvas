@@ -60,3 +60,9 @@
         }
     }
 </script>
+
+<style>
+    #stats > div > svg > g > g.dataset-units.dataset-line.dataset-0 > path.line-graph-path {
+        stroke-width: 2px !important;
+    }
+</style>

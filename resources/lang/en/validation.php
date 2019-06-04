@@ -2,6 +2,7 @@
 
 return [
 
-    'unique' => 'The :attribute has already been taken.',
+    'required' => 'The :attribute field is required.',
+    'unique'   => 'The :attribute has already been taken.',
 
 ];

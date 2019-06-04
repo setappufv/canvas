@@ -18,7 +18,7 @@ class PublishCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Publish all of the Canvas resources';
+    protected $description = 'Publish any publishable assets from Canvas';
 
     /**
      * Execute the console command.
@@ -27,17 +27,16 @@ class PublishCommand extends Command
      */
     public function handle()
     {
-        $this->call('vendor:publish', [
+        $this->callSilent('vendor:publish', [
             '--tag'   => 'canvas-config',
             '--force' => $this->option('force'),
         ]);
 
-        $this->call('vendor:publish', [
+        $this->callSilent('vendor:publish', [
             '--tag'   => 'canvas-assets',
             '--force' => true,
         ]);
 
-        $this->line('');
-        $this->line('<info>[✔]</info> Canvas assets have published successfully.');
+        $this->info('Publishing complete.');
     }
 }

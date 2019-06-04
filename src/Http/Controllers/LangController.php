@@ -15,15 +15,16 @@ class LangController extends Controller
     public function __invoke(): void
     {
         $files = glob(dirname(__DIR__, 3).'/resources/lang/'.config('app.locale').'/*.php');
-        $strings = collect();
+        $lines = collect();
 
         foreach ($files as $file) {
-            $name = basename($file, '.php');
-            $strings->put($name, require $file);
+            $filename = basename($file, '.php');
+            $lines->put($filename, require $file);
         }
 
         header('Content-Type: text/javascript');
-        echo 'window.i18n = '.json_encode($strings->toArray()).';';
-        exit();
+        echo 'window.i18n = '.json_encode($lines->toArray()).';';
+
+        die();
     }
 }

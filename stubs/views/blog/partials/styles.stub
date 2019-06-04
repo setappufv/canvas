@@ -17,13 +17,13 @@
         border-bottom: 1px solid #e5e5e5;
     }
 
-    .blog-header-logo {
+    #brand {
         font-family: "Merriweather", Georgia, "Times New Roman", serif;
         font-weight: bolder;
         font-size: 2.25rem;
     }
 
-    .blog-header-logo:hover {
+    #brand:hover {
         text-decoration: none;
     }
 

@@ -3,15 +3,15 @@
 return [
 
     /*
-   |--------------------------------------------------------------------------
-   | Canvas Path
-   |--------------------------------------------------------------------------
-   |
-   | This is the URI path where Canvas will be accessible from. You are free
-   | to change this path to anything you like. Note that updating the URI
-   | will affect the internal API paths that are not exposed to users.
-   |
-   */
+    |--------------------------------------------------------------------------
+    | Canvas Path
+    |--------------------------------------------------------------------------
+    |
+    | This is the URI path where Canvas will be accessible from. You are free
+    | to change this path to anything you like. Note that updating the URI
+    | will affect the internal API paths that are not exposed to users.
+    |
+    */
 
     'path' => env('CANVAS_PATH_NAME', 'canvas'),
 
@@ -61,15 +61,15 @@ return [
     ],
 
     /*
-   |--------------------------------------------------------------------------
-   | Weekly Digest
-   |--------------------------------------------------------------------------
-   |
-   | This option enables Canvas to send notifications via e-mail. A weekly
-   | summary digest will be delivered via the default mail driver. This
-   | will provide helpful insights into your content and its impact.
-   |
-   */
+    |--------------------------------------------------------------------------
+    | Weekly Digest
+    |--------------------------------------------------------------------------
+    |
+    | This option enables Canvas to send notifications via e-mail. A weekly
+    | summary digest will be delivered via the default mail driver. This
+    | will provide helpful insights into your content and its impact.
+    |
+    */
 
     'mail' => [
         'enabled' => env('CANVAS_MAIL_ENABLED', false),
