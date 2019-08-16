@@ -5,8 +5,7 @@ return [
     'general' => [
         'sent_by' => 'Sent by',
     ],
-
-    'digest' => [
+    'digest'  => [
         'summary'         => 'Your weekly writer summary for',
         'details'         => 'Your posts on Canvas',
         'from'            => 'From',
@@ -14,8 +13,7 @@ return [
         'data'            => 'your posts received',
         'views'           => 'View(s)',
         'views_this_week' => 'View(s) this week',
-
-        'email' => [
+        'email'           => [
             'subject' => 'Stats for your posts',
         ],
     ],

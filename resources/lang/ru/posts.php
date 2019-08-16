@@ -73,9 +73,9 @@ return [
             ],
         ],
         'seo'      => [
-            'header'   => 'SEO и социальные сети',
-            'meta'     => 'Мета Описание',
-            'facebook' => [
+            'header'    => 'SEO и социальные сети',
+            'meta'      => 'Мета Описание',
+            'facebook'  => [
                 'title'       => [
                     'label'       => 'Название карты Facebook',
                     'placeholder' => 'Заголовок в карточке Facebook',
@@ -85,7 +85,7 @@ return [
                     'placeholder' => 'Описание в карточке Facebook',
                 ],
             ],
-            'twitter'  => [
+            'twitter'   => [
                 'title'       => [
                     'label'       => 'Название карты в Твиттере',
                     'placeholder' => 'Заголовок в Твиттере',
@@ -94,6 +94,10 @@ return [
                     'label'       => 'Твиттер Описание карты',
                     'placeholder' => 'Описание в Твиттере',
                 ],
+            ],
+            'canonical' => [
+                'label'       => 'канонический',
+                'placeholder' => 'Канонический URL оригинального источника',
             ],
         ],
         'settings' => [

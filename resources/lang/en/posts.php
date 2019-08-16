@@ -73,9 +73,9 @@ return [
             ],
         ],
         'seo'      => [
-            'header'   => 'SEO & Social',
-            'meta'     => 'Meta Description',
-            'facebook' => [
+            'header'    => 'SEO & Social',
+            'meta'      => 'Meta Description',
+            'facebook'  => [
                 'title'       => [
                     'label'       => 'Facebook Card Title',
                     'placeholder' => 'Title in Facebook Card',
@@ -85,7 +85,7 @@ return [
                     'placeholder' => 'Description in Facebook Card',
                 ],
             ],
-            'twitter'  => [
+            'twitter'   => [
                 'title'       => [
                     'label'       => 'Twitter Card Title',
                     'placeholder' => 'Title in Twitter Card',
@@ -94,6 +94,10 @@ return [
                     'label'       => 'Twitter Card Description',
                     'placeholder' => 'Description in Twitter Card',
                 ],
+            ],
+            'canonical' => [
+                'label'       => 'Canonical',
+                'placeholder' => 'Canonical URL of original source',
             ],
         ],
         'settings' => [

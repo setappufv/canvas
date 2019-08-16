@@ -50,8 +50,6 @@ class StoreViewData
      */
     private function storeInSession(Post $post)
     {
-        $key = 'viewed_posts.'.$post->id;
-
-        session()->put($key, time());
+        session()->put("viewed_posts.{$post->id}", time());
     }
 }

@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-    <tag-list :models="{{ $data['tags'] }}" inline-template>
+    <tag-list :models="{{ $tags }}" inline-template>
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-10">
@@ -34,7 +34,7 @@
                         </div>
                     </div>
 
-                    @if(count($data['tags']))
+                    @if($tags->isNotEmpty())
                         <div v-cloak>
                             <div class="d-flex border-top py-3 align-items-center" v-for="tag in filteredList">
                                 <div class="mr-auto">

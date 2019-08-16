@@ -1,7 +1,7 @@
 <form role="form" id="form-edit" method="POST" action="{{ route('canvas.post.update', $data['post']->id) }}"
       enctype="multipart/form-data">
-    @csrf
-    @method('PUT')
+    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+    {{ method_field('PUT') }}
 
     <div class="form-group row my-3">
         <div class="col-lg-12">

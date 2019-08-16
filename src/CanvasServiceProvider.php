@@ -67,7 +67,7 @@ class CanvasServiceProvider extends ServiceProvider
     private function handleRoutes()
     {
         Route::group($this->routeConfiguration(), function () {
-            $this->loadRoutesFrom(__DIR__.'/../routes/canvas.php');
+            $this->loadRoutesFrom(__DIR__.'/Http/routes.php');
         });
     }
 

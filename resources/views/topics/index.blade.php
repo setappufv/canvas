@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-    <topic-list :models="{{ $data['topics'] }}" inline-template>
+    <topic-list :models="{{ $topics }}" inline-template>
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-10">
@@ -34,7 +34,7 @@
                         </div>
                     </div>
 
-                    @if(count($data['topics']))
+                    @if($topics->isNotEmpty())
                         <div v-cloak>
                             <div class="d-flex border-top py-3 align-items-center" v-for="topic in filteredList">
                                 <div class="mr-auto">

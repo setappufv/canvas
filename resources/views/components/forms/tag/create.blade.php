@@ -1,6 +1,6 @@
 <form role="form" id="form-create" method="POST" action="{{ route('canvas.tag.store') }}">
-    @csrf
-    <input type="hidden" name="id" hidden value="{{ $data['id'] }}">
+    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+    <input type="hidden" name="id" hidden value="{{ $tag_id }}">
 
     <slug-component inline-template>
         <div v-cloak>

@@ -6,39 +6,36 @@ use Canvas\Tag;
 use Canvas\Post;
 use Canvas\Topic;
 use Carbon\Carbon;
-use Illuminate\Support\Str;
+use Ramsey\Uuid\Uuid;
 use Illuminate\Validation\Rule;
 use Illuminate\Routing\Controller;
 
 class PostController extends Controller
 {
     /**
-     * Get all of the posts.
+     * Show the posts index page.
      *
      * @return \Illuminate\View\View
      */
     public function index()
     {
-        $posts = Post::orderByDesc('created_at')
-            ->select('id', 'title', 'body', 'published_at', 'featured_image', 'created_at')
+        $posts = Post::select('id', 'title', 'body', 'published_at', 'featured_image', 'created_at')
+            ->orderByDesc('created_at')
             ->get();
 
-        $data = [
-            'posts' => $posts,
-        ];
-
-        return view('canvas::posts.index', compact('data'));
+        return view('canvas::posts.index', compact('posts'));
     }
 
     /**
-     * Create a new post.
+     * Show the page to create a new post.
      *
      * @return \Illuminate\View\View
+     * @throws \Exception
      */
     public function create()
     {
         $data = [
-            'id'     => Str::uuid(),
+            'id'     => Uuid::uuid4(),
             'tags'   => Tag::all(['name', 'slug']),
             'topics' => Topic::all(['name', 'slug']),
         ];
@@ -47,7 +44,7 @@ class PostController extends Controller
     }
 
     /**
-     * Edit a given post.
+     * Show the page to edit a given post.
      *
      * @param string $id
      * @return \Illuminate\View\View
@@ -70,6 +67,7 @@ class PostController extends Controller
      * Save a new post.
      *
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     public function store()
     {
@@ -89,6 +87,7 @@ class PostController extends Controller
                 'og_description'      => request('og_description', null),
                 'twitter_title'       => request('twitter_title', null),
                 'twitter_description' => request('twitter_description', null),
+                'canonical_link'      => request('canonical_link', null),
             ],
         ];
 
@@ -110,11 +109,11 @@ class PostController extends Controller
         $post->save();
 
         $post->tags()->sync(
-            $this->collectTags(request('tags') ?? [])
+            $this->attachOrCreateTags(request('tags') ?? [])
         );
 
         $post->topic()->sync(
-            $this->assignTopic(request('topic') ?? [])
+            $this->attachOrCreateTopic(request('topic') ?? [])
         );
 
         return redirect(route('canvas.post.edit', $post->id))->with('notify', __('canvas::nav.notify.success'));
@@ -125,6 +124,7 @@ class PostController extends Controller
      *
      * @param string $id
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     public function update(string $id)
     {
@@ -146,6 +146,7 @@ class PostController extends Controller
                 'og_description'      => request('og_description', null),
                 'twitter_title'       => request('twitter_title', null),
                 'twitter_description' => request('twitter_description', null),
+                'canonical_link'      => request('canonical_link', null),
             ],
         ];
 
@@ -166,11 +167,11 @@ class PostController extends Controller
         $post->save();
 
         $post->tags()->sync(
-            $this->collectTags(request('tags') ?? [])
+            $this->attachOrCreateTags(request('tags') ?? [])
         );
 
         $post->topic()->sync(
-            $this->assignTopic(request('topic') ?? [])
+            $this->attachOrCreateTopic(request('topic') ?? [])
         );
 
         return redirect(route('canvas.post.edit', $post->id))->with('notify', __('canvas::nav.notify.success'));
@@ -191,14 +192,14 @@ class PostController extends Controller
     }
 
     /**
-     * Collect or create given tags.
+     * Attach or create tags given an incoming array.
      *
      * @param array $incomingTags
      * @return array
      *
      * @author Mohamed Said <themsaid@gmail.com>
      */
-    private function collectTags(array $incomingTags): array
+    private function attachOrCreateTags(array $incomingTags): array
     {
         $tags = Tag::all();
 
@@ -207,7 +208,7 @@ class PostController extends Controller
 
             if (! $tag) {
                 $tag = Tag::create([
-                    'id'   => $id = Str::uuid(),
+                    'id'   => $id = Uuid::uuid4(),
                     'name' => $incomingTag['name'],
                     'slug' => $incomingTag['slug'],
                 ]);
@@ -218,19 +219,20 @@ class PostController extends Controller
     }
 
     /**
-     * Assign a given topic.
+     * Attach or create a topic given an incoming array.
      *
      * @param array $incomingTopic
      * @return array
+     * @throws \Exception
      */
-    private function assignTopic(array $incomingTopic): array
+    private function attachOrCreateTopic(array $incomingTopic): array
     {
         if ($incomingTopic) {
             $topic = Topic::where('slug', $incomingTopic['slug'])->first();
 
             if (! $topic) {
                 $topic = Topic::create([
-                    'id'   => $id = Str::uuid(),
+                    'id'   => $id = Uuid::uuid4(),
                     'name' => $incomingTopic['name'],
                     'slug' => $incomingTopic['slug'],
                 ]);

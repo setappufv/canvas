@@ -21,7 +21,7 @@
 
         methods: {
             /**
-             * Convert a string to a slug.
+             * Trim an alphanumeric string and convert to a slug.
              *
              * @source https://gist.github.com/mathewbyrne/1280286
              */

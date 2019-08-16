@@ -3,53 +3,50 @@
 namespace Canvas\Http\Controllers;
 
 use Canvas\Topic;
-use Illuminate\Support\Str;
+use Ramsey\Uuid\Uuid;
 use Illuminate\Validation\Rule;
 use Illuminate\Routing\Controller;
 
 class TopicController extends Controller
 {
     /**
-     * Get all of the topics.
+     * Show the topics index page.
      *
      * @return \Illuminate\View\View
      */
     public function index()
     {
-        $data = [
-            'topics' => Topic::orderByDesc('created_at')->withCount('posts')->get(),
-        ];
+        $topics = Topic::orderByDesc('created_at')
+            ->withCount('posts')
+            ->get();
 
-        return view('canvas::topics.index', compact('data'));
+        return view('canvas::topics.index', compact('topics'));
     }
 
     /**
-     * Create a new topic.
+     * Show the page to create a new topic.
      *
      * @return \Illuminate\View\View
+     * @throws \Exception
      */
     public function create()
     {
-        $data = [
-            'id' => Str::uuid(),
-        ];
+        $topic_id = Uuid::uuid4();
 
-        return view('canvas::topics.create', compact('data'));
+        return view('canvas::topics.create', compact('topic_id'));
     }
 
     /**
-     * Edit a given topic.
+     * Show the page to edit a given topic.
      *
      * @param string $id
      * @return \Illuminate\View\View
      */
     public function edit(string $id)
     {
-        $data = [
-            'topic' => Topic::findOrFail($id),
-        ];
+        $topic = Topic::findOrFail($id);
 
-        return view('canvas::topics.edit', compact('data'));
+        return view('canvas::topics.edit', compact('topic'));
     }
 
     /**
@@ -123,6 +120,7 @@ class TopicController extends Controller
     public function destroy(string $id)
     {
         $topic = Topic::findOrFail($id);
+
         $topic->delete();
 
         return redirect(route('canvas.topic.index'));

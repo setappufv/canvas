@@ -3,53 +3,50 @@
 namespace Canvas\Http\Controllers;
 
 use Canvas\Tag;
-use Illuminate\Support\Str;
+use Ramsey\Uuid\Uuid;
 use Illuminate\Validation\Rule;
 use Illuminate\Routing\Controller;
 
 class TagController extends Controller
 {
     /**
-     * Get all of the tags.
+     * Show the tags index page.
      *
      * @return \Illuminate\View\View
      */
     public function index()
     {
-        $data = [
-            'tags' => Tag::orderByDesc('created_at')->withCount('posts')->get(),
-        ];
+        $tags = Tag::orderByDesc('created_at')
+            ->withCount('posts')
+            ->get();
 
-        return view('canvas::tags.index', compact('data'));
+        return view('canvas::tags.index', compact('tags'));
     }
 
     /**
-     * Create a new tag.
+     * Show the page to create a new tag.
      *
      * @return \Illuminate\View\View
+     * @throws \Exception
      */
     public function create()
     {
-        $data = [
-            'id' => Str::uuid(),
-        ];
+        $tag_id = Uuid::uuid4();
 
-        return view('canvas::tags.create', compact('data'));
+        return view('canvas::tags.create', compact('tag_id'));
     }
 
     /**
-     * Edit a given tag.
+     * Show the page to edit a given tag.
      *
      * @param string $id
      * @return \Illuminate\View\View
      */
     public function edit(string $id)
     {
-        $data = [
-            'tag' => Tag::findOrFail($id),
-        ];
+        $tag = Tag::findOrFail($id);
 
-        return view('canvas::tags.edit', compact('data'));
+        return view('canvas::tags.edit', compact('tag'));
     }
 
     /**
@@ -123,6 +120,7 @@ class TagController extends Controller
     public function destroy(string $id)
     {
         $tag = Tag::findOrFail($id);
+
         $tag->delete();
 
         return redirect(route('canvas.tag.index'));

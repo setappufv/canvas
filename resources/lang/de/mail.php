@@ -5,17 +5,15 @@ return [
     'general' => [
         'sent_by' => 'Gesendet von',
     ],
-
-    'digest' => [
+    'digest'  => [
         'summary'         => 'Deine wöchentliche Autorenübersicht für',
-        'details'         => 'Ihre Beiträge auf Leinwand',
+        'details'         => 'Deine Beiträge auf Canvas',
         'from'            => 'Von',
         'to'              => 'zu',
         'data'            => 'Ihre Beiträge erhalten',
         'views'           => 'Ansicht(en)',
         'views_this_week' => 'Ansicht(en) diese Woche',
-
-        'email' => [
+        'email'           => [
             'subject' => 'Statistiken für Ihre Beiträge',
         ],
     ],

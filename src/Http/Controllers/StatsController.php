@@ -4,32 +4,34 @@ namespace Canvas\Http\Controllers;
 
 use Canvas\Post;
 use Canvas\View;
+use Canvas\Trends;
 use Illuminate\Routing\Controller;
 
 class StatsController extends Controller
 {
+    use Trends;
+
     /**
-     * Days in the past to generate statistics for.
+     * Number of days in the past to generate stats for.
      *
      * @const int
      */
-    private const DAYS_PRIOR = 30;
+    const DAYS_PRIOR = 30;
 
     /**
-     * Get all of the posts and views.
+     * Show the stats index page with post and view data.
      *
      * @return \Illuminate\View\View
      */
     public function index()
     {
-        // Get all of the published posts
-        $published = Post::published()
+        $published = Post::select('id', 'title', 'body', 'published_at', 'created_at')
+            ->published()
             ->orderByDesc('created_at')
-            ->select('id', 'title', 'body', 'published_at', 'created_at')
             ->withCount('views')
             ->get();
 
-        // Append the reading time attribute
+        // Append the estimated reading time
         $published->each->append('read_time');
 
         // Get views for the last [X] days
@@ -46,7 +48,7 @@ class StatsController extends Controller
             ],
             'views' => [
                 'count' => $views->count(),
-                'trend' => json_encode(View::viewTrend($views, self::DAYS_PRIOR)),
+                'trend' => json_encode($this->getViewTrends($views, self::DAYS_PRIOR)),
             ],
         ];
 
@@ -54,7 +56,7 @@ class StatsController extends Controller
     }
 
     /**
-     * Get the statistics for a given post.
+     * Show the stats page for a given post.
      *
      * @param string $id
      * @return \Illuminate\View\View
@@ -68,7 +70,7 @@ class StatsController extends Controller
                 'post'                  => $post,
                 'traffic'               => $post->top_referers,
                 'popular_reading_times' => $post->popular_reading_times,
-                'views'                 => json_encode($post->view_trend),
+                'views'                 => json_encode($this->getViewTrends($post->views, self::DAYS_PRIOR)),
             ];
 
             return view('canvas::stats.show', compact('data'));

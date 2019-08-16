@@ -1,6 +1,6 @@
 <form role="form" id="form-create" method="POST" action="{{ route('canvas.post.store') }}"
       enctype="multipart/form-data">
-    @csrf
+    <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <input type="hidden" name="id" hidden value="{{ $data['id'] }}">
 
     <div class="form-group row my-3">

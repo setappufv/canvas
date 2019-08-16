@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-    <post-list :models="{{ $data['posts'] }}" :default-timezone="{{ json_encode(config('app.timezone')) }}" inline-template>
+    <post-list :models="{{ $posts }}" :default-timezone="{{ json_encode(config('app.timezone')) }}" inline-template>
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-10">
@@ -34,7 +34,7 @@
                         </div>
                     </div>
 
-                    @if(count($data['posts']))
+                    @if($posts->isNotEmpty())
                         <div v-cloak>
                             <div class="d-flex border-top py-3 align-items-center" v-for="post in filteredList">
                                 <div class="mr-auto py-1">

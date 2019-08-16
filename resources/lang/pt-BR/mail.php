@@ -8,7 +8,7 @@ return [
 
     'digest' => [
         'summary'         => 'Seu resumo do escritor semanal para',
-        'details'         => 'Suas postagens na tela',
+        'details'         => 'Suas postagens em Canvas',
         'from'            => 'De',
         'to'              => 'para',
         'data'            => 'suas postagens recebidas',

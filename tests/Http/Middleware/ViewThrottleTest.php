@@ -3,8 +3,8 @@
 namespace Canvas\Tests\Listeners;
 
 use Canvas\Post;
+use Ramsey\Uuid\Uuid;
 use Canvas\Tests\TestCase;
-use Illuminate\Support\Str;
 use Canvas\Http\Middleware\ViewThrottle;
 
 class ViewThrottleTest extends TestCase
@@ -30,7 +30,7 @@ class ViewThrottleTest extends TestCase
     public function filter_expired_views_in_session()
     {
         $post1 = Post::create([
-            'id'      => Str::uuid()->toString(),
+            'id'      => Uuid::uuid4()->toString(),
             'title'   => 'Example Post 1',
             'slug'    => 'example-slug-1',
             'user_id' => 1,
@@ -41,7 +41,7 @@ class ViewThrottleTest extends TestCase
         session()->put($key1, now()->timestamp);
 
         $post2 = Post::create([
-            'id'      => Str::uuid()->toString(),
+            'id'      => Uuid::uuid4()->toString(),
             'title'   => 'Example Post 2',
             'slug'    => 'example-slug-2',
             'user_id' => 1,

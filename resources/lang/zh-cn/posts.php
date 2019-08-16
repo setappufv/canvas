@@ -73,9 +73,9 @@ return [
             ],
         ],
         'seo'      => [
-            'header'   => 'SEO和社交',
-            'meta'     => '元描述',
-            'facebook' => [
+            'header'    => 'SEO和社交',
+            'meta'      => '元描述',
+            'facebook'  => [
                 'title'       => [
                     'label'       => '',
                     'placeholder' => 'Facebook Card的標題',
@@ -85,7 +85,7 @@ return [
                     'placeholder' => 'Facebook Card中的描述',
                 ],
             ],
-            'twitter'  => [
+            'twitter'   => [
                 'title'       => [
                     'label'       => 'Twitter卡片標題',
                     'placeholder' => 'Twitter卡片中的標題',
@@ -94,6 +94,10 @@ return [
                     'label'       => 'Twitter卡描述',
                     'placeholder' => 'Twitter卡中的描述',
                 ],
+            ],
+            'canonical' => [
+                'label'       => '典范',
+                'placeholder' => '原始来源的规范URL',
             ],
         ],
         'settings' => [

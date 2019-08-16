@@ -5,7 +5,7 @@ namespace Canvas\Console;
 use Exception;
 use Canvas\Post;
 use Canvas\View;
-use Canvas\Mail\WeeklyDigest;
+use Canvas\Mail\Digest;
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
 use Illuminate\Foundation\Auth\User;
@@ -25,7 +25,7 @@ class DigestCommand extends Command
      *
      * @var string
      */
-    protected $description = 'E-mail a weekly digest of Canvas stats to a user';
+    protected $description = 'E-mail a weekly digest of reading stats to authors';
 
     /**
      * Execute the console command.
@@ -54,7 +54,7 @@ class DigestCommand extends Command
                 $data->put('end_date', now()->format('M d, Y'));
 
                 try {
-                    Mail::send(new WeeklyDigest($data->toArray()));
+                    Mail::send(new Digest($data->toArray()));
                 } catch (Exception $exception) {
                     logger()->error($exception->getMessage());
                 }

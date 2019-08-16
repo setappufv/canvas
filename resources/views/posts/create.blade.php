@@ -38,10 +38,6 @@
 
 @push('scripts')
     @if ($errors->has('slug'))
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $('#modal-settings').modal('show');
-            });
-        </script>
+        @include('canvas::components.modals.post.scripts.slug')
     @endif
 @endpush

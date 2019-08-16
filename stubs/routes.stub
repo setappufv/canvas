@@ -1,19 +1,6 @@
-
 Route::prefix('blog')->group(function () {
-    Route::get('/', 'BlogController@index')->name('blog.index');
-    Route::middleware('Canvas\Http\Middleware\ViewThrottle')->get('{slug}', 'BlogController@post')->name('blog.post');
-    Route::get('tag/{slug}', 'BlogController@tag')->name('blog.tag');
-    Route::get('topic/{slug}', 'BlogController@topic')->name('blog.topic');
-    
-    /* 
-    //Blog API
-    Route::prefix('api')->group(function () {
-        Route::middleware('throttle:500,1')->get('/', function () {
-            return response()->json(['message' => 'Blog API', 'status' => 'Connected']);
-        });
-        Route::get('post', 'BlogController@ApiPost');
-        Route::get('postId/{id}', 'BlogController@ApiPostId');
-    });
-    */
-
+    Route::get('/', 'BlogController@getPosts')->name('blog.index');
+    Route::middleware('Canvas\Http\Middleware\ViewThrottle')->get('{slug}', 'BlogController@findPostBySlug')->name('blog.post');
+    Route::get('tag/{slug}', 'BlogController@getPostsByTag')->name('blog.tag');
+    Route::get('topic/{slug}', 'BlogController@getPostsByTopic')->name('blog.topic');
 });

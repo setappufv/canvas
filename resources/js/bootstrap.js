@@ -16,8 +16,8 @@ try {
     window.trans = (string) => _.get(window.i18n, string);
 
     /**
-     * Current workaround for using the Autosize library which will only resize
-     * elements when clicked, not on the initial page load.
+     * Current workaround for using the Autosize library which will only
+     * resize elements when clicked, not on the initial page load.
      *
      * @link http://www.jacklmoore.com/autosize/#faq-hidden
      */

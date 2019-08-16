@@ -6,7 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class WeeklyDigest extends Mailable
+class Digest extends Mailable
 {
     use Queueable, SerializesModels;
 

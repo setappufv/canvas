@@ -3,7 +3,6 @@
 namespace Canvas;
 
 use Carbon\Carbon;
-use Carbon\CarbonPeriod;
 use Illuminate\Support\Str;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Database\Eloquent\Model;
@@ -198,7 +197,7 @@ class Post extends Model
         // Only return the top 5 reading times and percentages
         $sliced = array_slice($array, 0, 5, true);
 
-        // Sort the array in a descending fashion
+        // Sort the array in a descending order
         arsort($sliced);
 
         return $sliced;
@@ -226,56 +225,10 @@ class Post extends Model
         // Only return the top 10 referrers with their view count
         $sliced = array_slice($array, 0, 10, true);
 
-        // Sort the array in a descending fashion
+        // Sort the array in a descending order
         arsort($sliced);
 
         return $sliced;
-    }
-
-    /**
-     * Return a view count for the last 30 days.
-     *
-     * @return array
-     */
-    public function getViewTrendAttribute(): array
-    {
-        // Get the views associated with the post
-        $data = $this->views;
-
-        // Filter views to only include the last 30 days
-        $filtered = $data->filter(function ($value, $key) {
-            return $value->created_at >= now()->subDays(30);
-        });
-
-        // Filter the view data to only include created_at time strings
-        $collection = collect();
-        $filtered->sortBy('created_at')->each(function ($item, $key) use ($collection) {
-            $collection->push($item->created_at->toDateString());
-        });
-
-        // Count the unique values and assign to their respective keys
-        $views = array_count_values($collection->toArray());
-
-        // Create a 30 day range to hold the default date values
-        $period = CarbonPeriod::create(now()->subDays(30)->toDateString(), 30)->excludeStartDate();
-
-        // Prep the array to perform a comparison with the actual view data
-        $range = collect();
-        foreach ($period as $key => $date) {
-            $range->push($date->toDateString());
-        }
-
-        // Compare the view data and date range arrays, assigning view counts where applicable
-        $total = collect();
-        foreach ($range as $date) {
-            if (array_key_exists($date, $views)) {
-                $total->put($date, $views[$date]);
-            } else {
-                $total->put($date, 0);
-            }
-        }
-
-        return $total->toArray();
     }
 
     /**

@@ -14,9 +14,9 @@
                     {{ __('canvas::buttons.general.cancel') }}
                 </button>
 
-                <form id="form-delete" action="{{ route('canvas.tag.destroy', $data['tag']->id) }}" method="POST" style="display: none">
-                    @method('DELETE')
-                    @csrf
+                <form id="form-delete" action="{{ route('canvas.tag.destroy', $tag->id) }}" method="POST" style="display: none">
+                   <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    {{ method_field('DELETE') }}
                 </form>
             </div>
         </div>

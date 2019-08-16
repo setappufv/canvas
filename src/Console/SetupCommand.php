@@ -2,7 +2,15 @@
 
 namespace Canvas\Console;
 
+use Canvas\Tag;
+use Canvas\Post;
+use Canvas\Topic;
+use Faker\Generator;
+use Ramsey\Uuid\Uuid;
+use Illuminate\Support\Str;
 use Illuminate\Console\Command;
+use Illuminate\Foundation\Auth\User;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Console\DetectsApplicationNamespace;
 
 class SetupCommand extends Command
@@ -14,7 +22,7 @@ class SetupCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'canvas:setup';
+    protected $signature = 'canvas:setup {--data : Specifies that demo data should be seeded}';
 
     /**
      * The console command description.
@@ -40,15 +48,25 @@ class SetupCommand extends Command
      * Execute the console command.
      *
      * @return void
+     * @throws \Exception
      */
     public function handle()
     {
         $this->createDirectories();
         $this->exportViews();
-        $this->exportController();
+        $this->buildController();
         $this->registerRoutes();
 
-        $this->info('Setup complete. Head over to <comment>'.url('/blog').'</comment> to get started.');
+        // Optionally seed the database with demo data
+        if ($this->option('data')) {
+            if (User::find(1)) {
+                $this->seed();
+
+                $this->info('Setup complete. Head over to <comment>'.url('/blog').'</comment> to get started.');
+            } else {
+                $this->error('No users found. Please create a user and run the setup again.');
+            }
+        }
     }
 
     /**
@@ -76,7 +94,7 @@ class SetupCommand extends Command
     {
         foreach ($this->views as $key => $value) {
             if (file_exists($view = resource_path('views/blog/'.$value))) {
-                if (! $this->confirm("The [{$value}] view already exists. Do you want to replace it?")) {
+                if (! $this->confirm("The [blog/{$value}] view already exists. Do you want to replace it?")) {
                     continue;
                 }
             }
@@ -86,6 +104,35 @@ class SetupCommand extends Command
                 $view
             );
         }
+    }
+
+    /**
+     * Build the new controller.
+     *
+     * @return void
+     */
+    private function buildController()
+    {
+        if (! file_exists($controller = app_path('Http/Controllers/BlogController.php'))) {
+            $this->exportController();
+        } else {
+            if ($this->confirm('The [Http/Controllers/BlogController.php] already exists. Do you want to replace it?')) {
+                $this->exportController();
+            }
+        }
+    }
+
+    /**
+     * Export the new controller.
+     *
+     * @return void
+     */
+    private function exportController()
+    {
+        file_put_contents(
+            app_path('Http/Controllers/BlogController.php'),
+            $this->compileControllerStub()
+        );
     }
 
     /**
@@ -103,29 +150,93 @@ class SetupCommand extends Command
     }
 
     /**
-     * Export the new controller.
-     *
-     * @return void
-     */
-    private function exportController()
-    {
-        file_put_contents(
-            app_path('Http/Controllers/BlogController.php'),
-            $this->compileControllerStub()
-        );
-    }
-
-    /**
      * Register the new routes.
      *
      * @return void
      */
     private function registerRoutes()
     {
-        file_put_contents(
-            base_path('routes/web.php'),
-            file_get_contents(dirname(__DIR__, 2).'/stubs/routes.stub'),
-            FILE_APPEND
-        );
+        if (! Route::has('blog.index')) {
+            file_put_contents(
+                base_path('routes/web.php'),
+                file_get_contents(dirname(__DIR__, 2).'/stubs/routes.stub'),
+                FILE_APPEND
+            );
+        }
+    }
+
+    /**
+     * Run the demo data seeder.
+     *
+     * @return void
+     * @throws \Exception
+     */
+    private function seed()
+    {
+        /** @var \Faker\Generator $faker */
+        $faker = resolve(Generator::class);
+
+        // Seed the posts data
+        $posts = collect();
+        $post_counter = 1;
+        while ($post_counter < 6) {
+            $title = $faker->words(3, true);
+            $post_id = Uuid::uuid4();
+            $post = Post::create([
+                'id'                     => $post_id,
+                'slug'                   => "post-{$post_id}",
+                'title'                  => ucfirst($title),
+                'summary'                => $faker->sentence,
+                'body'                   => $faker->realText(500),
+                'published_at'           => now()->toDateTimeString(),
+                'featured_image'         => 'https://source.unsplash.com/random/640x480',
+                'featured_image_caption' => ucfirst($title),
+                'user_id'                => User::first()->id,
+            ]);
+
+            $posts->push($post);
+            $post_counter++;
+        }
+
+        // Seed the tags data
+        $tags = collect();
+        $tag_counter = 1;
+        while ($tag_counter < 10) {
+            $name = ucfirst($faker->words(2, true));
+            $tag = Tag::create([
+                'id'   => Uuid::uuid4(),
+                'slug' => Str::slug($name),
+                'name' => $name,
+            ]);
+
+            $tags->push($tag);
+            $tag_counter++;
+        }
+
+        // Seed the topics data
+        $topics = collect();
+        $topic_counter = 1;
+        while ($topic_counter < 10) {
+            $name = ucfirst($faker->words(2, true));
+            $topic = Topic::create([
+                'id'   => Uuid::uuid4(),
+                'slug' => Str::slug($name),
+                'name' => $name,
+            ]);
+
+            $topics->push($topic);
+            $topic_counter++;
+        }
+
+        // Associate tags and topics with the posts
+        $posts->each(function ($post) use ($tags, $topics) {
+            $post->tags()->attach(
+                $tags->random(rand(1, 3))->pluck('id')->toArray()
+            );
+
+            $post->topic()->attach(
+                $topics->random(1)->pluck('id')->toArray()
+            );
+        });
     }
 }

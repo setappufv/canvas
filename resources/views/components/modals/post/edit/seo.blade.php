@@ -44,6 +44,16 @@
                                   title="{{ __('canvas::posts.forms.seo.twitter.description.label') }}">{{ $data['meta']['twitter_description'] }}</textarea>
                     </div>
                 </div>
+                @isset($data['meta']['canonical_link'])
+                    <div class="form-group row">
+                        <div class="col-12">
+                            <label for="canonical_link" class="font-weight-bold">{{ __('canvas::posts.forms.seo.canonical.label') }}</label>
+                            <input type="text" class="form-control border-0 px-0"
+                                   name="canonical_link" title="{{ __('canvas::posts.forms.seo.canonical.label') }}" value="{{ $data['meta']['canonical_link'] }}"
+                                   placeholder="{{ __('canvas::posts.forms.seo.canonical.placeholder') }}">
+                        </div>
+                    </div>
+                @endisset
             </div>
             <div class="modal-footer">
                 <button class="btn btn-link text-muted" data-dismiss="modal">{{ __('canvas::buttons.general.done') }}</button>

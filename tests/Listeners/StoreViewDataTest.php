@@ -3,8 +3,8 @@
 namespace Canvas\Tests\Listeners;
 
 use Canvas\Post;
+use Ramsey\Uuid\Uuid;
 use Canvas\Tests\TestCase;
-use Illuminate\Support\Str;
 use Canvas\Listeners\StoreViewData;
 
 class StoreViewDataTest extends TestCase
@@ -30,7 +30,7 @@ class StoreViewDataTest extends TestCase
     public function check_if_a_post_was_recently_viewed()
     {
         $post = Post::create([
-            'id'      => Str::uuid()->toString(),
+            'id'      => Uuid::uuid4()->toString(),
             'title'   => 'Example Post',
             'slug'    => 'example-slug',
             'user_id' => 1,
@@ -56,7 +56,7 @@ class StoreViewDataTest extends TestCase
     public function store_a_post_id_in_session()
     {
         $post = Post::create([
-            'id'      => Str::uuid()->toString(),
+            'id'      => Uuid::uuid4()->toString(),
             'title'   => 'Example Post',
             'slug'    => 'example-slug',
             'user_id' => 1,

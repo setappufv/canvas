@@ -36,9 +36,9 @@ return [
     | Uploads Disk
     |--------------------------------------------------------------------------
     |
-    | This is the storage disk Canvas will use to put file uploads, you can
-    | use any of the disks defined in your config/filesystems.php file.
-    | You may also configure the path files should be stored at.
+    | This is the storage disk Canvas will use to put file uploads, you may
+    | use any of the disks defined in the config/filesystems.php file and
+    | You may also configure the path where files are to be stored.
     |
     */
 
@@ -51,8 +51,9 @@ return [
     | Unsplash Integration
     |--------------------------------------------------------------------------
     |
-    | Visit https://unsplash.com/oauth/applications to create a new unsplash
-    | app. Use the Access Key to integrate with the Unsplash API
+    | Visit https://unsplash.com/oauth/applications to create a new Unsplash
+    | app. Use the confidential Access Key given to you to integrate with
+    | the API. Note that demo apps are limited to 50 requests per hour.
     |
     */
 
@@ -62,12 +63,12 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Weekly Digest
+    | Notifications
     |--------------------------------------------------------------------------
     |
-    | This option enables Canvas to send notifications via e-mail. A weekly
-    | summary digest will be delivered via the default mail driver. This
-    | will provide helpful insights into your content and its impact.
+    | This option enables Canvas to send e-mail notifications via the default
+    | mail driver. If enabled, a weekly summary will be sent to each user
+    | that has authored content providing them with unique analytics.
     |
     */
 

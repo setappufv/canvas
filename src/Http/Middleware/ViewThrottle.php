@@ -13,7 +13,7 @@ class ViewThrottle
      *
      * @const int
      */
-    private const EXPIRES_IN = 3600;
+    const EXPIRES_IN = 3600;
 
     /**
      * Handle the incoming request.
@@ -51,14 +51,8 @@ class ViewThrottle
      */
     private function pruneExpiredViews(array $posts): void
     {
-        $time = time();
-
-        $throttleLimit = self::EXPIRES_IN;
-
-        $collection = collect($posts);
-
-        foreach ($collection as $key => $value) {
-            if ($value < $time - $throttleLimit) {
+        foreach (collect($posts) as $key => $value) {
+            if ($value < time() - self::EXPIRES_IN) {
                 session()->forget('viewed_posts.'.$key);
             }
         }
