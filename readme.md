@@ -38,11 +38,9 @@ php artisan storage:link
 
 ## Configuração
 
-<<<<<<< HEAD
 > **Nota:** Você não é obrigado a concluir as etapas a seguir. Você tem total liberdade de design ao integrar o conteúdo do blog em seu aplicativo.
 =======
 **Want to get started fast?** Just run `php artisan canvas:setup` after installing Canvas. A `--data` option may also be included in the command to generate demo data. Then, navigate your browser to `http://your-app.test/blog` or any other URL that is assigned to your application. This command scaffolds a default frontend for your entire blog!
->>>>>>> upstream/master
 
 Gere um controlador de blog padrão com rotas e visualizações para começar a funcionar o mais rápido possível:
 

@@ -1,7 +1,5 @@
 <?php
-
 return [
-
     'title'   => 'Blog',
     'buttons' => [
         'learn' => 'Saber mais',
@@ -30,5 +28,4 @@ return [
     'tags'    => [
         'label' => 'Tag',
     ],
-
 ];

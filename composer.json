@@ -1,52 +1,52 @@
 {
-	"name": "setappufv/canvas",
-	"description": "Blog Laravel",
-	"keywords": ["setappufv", "blog", "laravel"],
-	"license": "MIT",
-	"homepage": "https://cnvs.io",
-	"support": {
-		"issues": "https://github.com/setappufv/canvas/issues",
-		"source": "https://github.com/setappufv/canvas"
-	},
-	"authors": [
-		{
-			"name": "Alberto E. A. Júnior",
-			"email": "albertoelias.amaral@yahoo.com"
-		}
-	],
-	"require": {
-		"php": ">=7.0",
-		"ext-json": "*",
-		"illuminate/support": "5.5.x|5.6.x|5.7.x|5.8.x"
-	},
-	"require-dev": {
-		"mockery/mockery": "^1.1",
-		"orchestra/testbench": "3.5.x|3.6.x|3.7.x|3.8.x",
-		"phpunit/phpunit": "^7.5"
-	},
-	"autoload": {
-		"psr-4": {
-			"Canvas\\": "src/"
-		}
-	},
-	"autoload-dev": {
-		"psr-4": {
-			"Canvas\\Tests\\": "tests/"
-		}
-	},
-	"scripts": {
-		"test": "vendor/bin/phpunit"
-	},
-	"extra": {
-		"laravel": {
-			"providers": [
-				"Canvas\\CanvasServiceProvider"
-			]
-		}
-	},
-	"config": {
-		"sort-packages": true
-	},
-	"minimum-stability": "dev",
-	"prefer-stable": true
+    "name": "setappufv/canvas",
+    "description": "Blog Laravel",
+    "keywords": ["setappufv", "blog", "laravel"],
+    "license": "MIT",
+    "homepage": "https://cnvs.io",
+    "support": {
+        "issues": "https://github.com/setappufv/canvas/issues",
+        "source": "https://github.com/setappufv/canvas"
+    },
+    "authors": [
+        {
+            "name": "Alberto E. A. Júnior",
+            "email": "albertoelias.amaral@yahoo.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0",
+        "ext-json": "*",
+        "illuminate/support": "5.5.x|5.6.x|5.7.x|5.8.x"
+    },
+    "require-dev": {
+        "mockery/mockery": "^1.1",
+        "orchestra/testbench": "3.5.x|3.6.x|3.7.x|3.8.x",
+        "phpunit/phpunit": "^7.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Canvas\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Canvas\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Canvas\\CanvasServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
