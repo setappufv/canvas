@@ -7,7 +7,9 @@
 @endpush
 
 @push('meta')
+
     <meta name="description" content="{{ $data['meta']['meta_description'] }}">
+    <meta property="og:type" content="article">
     <meta name="og:title" content="{{ $data['meta']['og_title'] }}">
     <meta name="og:description" content="{{ $data['meta']['og_description'] }}">
     <meta name="twitter:card" content="summary">

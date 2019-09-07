@@ -61,12 +61,12 @@ class SetupCommand extends Command
         if ($this->option('data')) {
             if (User::find(1)) {
                 $this->seed();
-
-                $this->info('Setup complete. Head over to <comment>'.url('/blog').'</comment> to get started.');
             } else {
-                $this->error('No users found. Please create a user and run the setup again.');
+                $this->error('No users found. Please create a user and re-run the setup.');
             }
         }
+
+        $this->info('Setup complete. Head over to <comment>'.url('/blog').'</comment> to get started.');
     }
 
     /**

@@ -2,6 +2,15 @@
 
 ## [Unreleased](https://github.com/cnvs/canvas/compare/master...develop)
 
+## [4.2.7](https://github.com/cnvs/canvas/compare/v4.2.6...v4.2.7) (August 19, 2019)
+
+## Added
+- Added an Open Graph prefix and `og-type` ([#521](https://github.com/cnvs/canvas/pull/521), [1a81dd8](https://github.com/cnvs/canvas/commit/1a81dd81d615b1dc47385126c686abebc7d9c69f))
+
+## Fixed
+- Patch for the missing info line output during the `canvas:setup` command ([8e3751e](https://github.com/cnvs/canvas/commit/8e3751e96ff7daa285c206df86b471c3a613661a))
+- Patch for the referer property being null but not empty ([#533](https://github.com/cnvs/canvas/issues/533), [6b92b5e](https://github.com/cnvs/canvas/commit/6b92b5ec843f57f3788ebb4720a87e88c191ea7a))
+
 ## [4.2.6](https://github.com/cnvs/canvas/compare/v4.2.5...v4.2.6) (June 19, 2019)
 
 ## Changed
@@ -96,7 +105,7 @@
 ### Changed
 - Minor updates to the sponsorship page ([91a6ff5](https://github.com/cnvs/canvas/commit/91a6ff598821fe76627398be6b725c2ad3cb522c))
 
-## [v4.1.36](https://github.com/cnvs/canvas/compare/v4.1.35...v4.1.36) (May 22, 2019)
+## [v4.1.36](https://github.com/cnvs/canvas/compare/v4.1.35...v4.1.36) (May 16, 2019)
 
 ### Added
 - Added sponsor information ([6476549](https://github.com/cnvs/canvas/commit/64765492e228ac859399054f7aee05e5fcf07b33))
