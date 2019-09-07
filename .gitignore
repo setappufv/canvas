@@ -8,3 +8,5 @@ yarn-error.log
 .DS_Store
 Thumbs.db
 .phpunit.result.cache
+.code-workspace
+*.code-workspace
